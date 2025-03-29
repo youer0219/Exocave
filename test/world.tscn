@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://c7f1g5nnsjak2"]
+[gd_scene load_steps=12 format=4 uid="uid://c7f1g5nnsjak2"]
 
 [ext_resource type="Script" uid="uid://dyg0757ngv8an" path="res://test/world.gd" id="1_cnhom"]
 [ext_resource type="Texture2D" uid="uid://c5mpgyumntnm6" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap.png" id="1_qkrv2"]
 [ext_resource type="Texture2D" uid="uid://nph0kcsdaqnv" path="res://assets/kenney_pixel-platformer/Tiles/tile_0026.png" id="3_joln0"]
 [ext_resource type="Script" uid="uid://v6jpyrttgo7t" path="res://components/grivate_area_2d.gd" id="4_bf7q6"]
+[ext_resource type="Script" uid="uid://kjk2x7wbqktm" path="res://test/player.gd" id="5_hqvew"]
+[ext_resource type="Texture2D" uid="uid://baq7k7lfw62ed" path="res://assets/kenney_pixel-platformer/Tiles/Characters/tile_0011.png" id="5_hxqi4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joln0"]
+size = Vector2(667, 381)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cnhom"]
 texture = ExtResource("1_qkrv2")
@@ -230,11 +235,21 @@ sources/10 = SubResource("TileSetAtlasSource_cnhom")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bf7q6"]
 size = Vector2(18, 18)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_joln0"]
-size = Vector2(667, 381)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh2ud"]
+size = Vector2(18, 18)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cnhom")
+
+[node name="GravityArea2D" type="Area2D" parent="."]
+position = Vector2(302, 192)
+gravity_space_override = 3
+script = ExtResource("4_bf7q6")
+gravity_state = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea2D"]
+position = Vector2(20.5, -10.5)
+shape = SubResource("RectangleShape2D_joln0")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAABMACgACAAYAAAABABMACgACAAYAAAACABMACgACAAYAAAADABMACgACAAYAAAAEABMACgACAAYAAAAFABMACgACAAYAAAAGABMACgACAAYAAAAHABMACgACAAYAAAAIABMACgACAAYAAAAJABMACgACAAYAAAAKABMACgACAAYAAAALABMACgACAAYAAAAMABMACgACAAYAAAANABMACgACAAYAAAAOABMACgACAAYAAAAPABMACgACAAYAAAAQABMACgACAAYAAAARABMACgACAAYAAAASABMACgACAAYAAAATABMACgACAAYAAAAUABMACgACAAYAAAAVABMACgACAAYAAAAWABMACgACAAYAAAAXABMACgACAAYAAAAYABMACgACAAYAAAAZABMACgACAAYAAAAaABMACgACAAYAAAAbABMACgACAAYAAAAcABMACgACAAYAAAAdABMACgACAAYAAAAeABMACgACAAYAAAAfABMACgACAAYAAAAgABMACgACAAYAAAAhABMACgACAAYAAAAiABMACgACAAYAAAAjABMACgACAAYAAAAAABIACgACAAYAAAAAABEACgACAAYAAAAAABAACgACAAYAAAAAAA8ACgACAAYAAAAAAA4ACgACAAYAAAAAAA0ACgACAAYAAAAAAAwACgACAAYAAAAAAAsACgACAAYAAAAAAAoACgACAAYAAAAAAAkACgACAAYAAAAAAAgACgACAAYAAAAAAAcACgACAAYAAAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAYAAAAAAAMACgACAAYAAAAAAAIACgACAAYAAAAAAAEACgACAAYAAAAAAAAACgACAAYAAAABAAAACgACAAYAAAACAAAACgACAAYAAAADAAAACgACAAYAAAAEAAAACgACAAYAAAAFAAAACgACAAYAAAAGAAAACgACAAYAAAAHAAAACgACAAYAAAAIAAAACgACAAYAAAAJAAAACgACAAYAAAAKAAAACgACAAYAAAALAAAACgACAAYAAAAMAAAACgACAAYAAAANAAAACgACAAYAAAAOAAAACgACAAYAAAAPAAAACgACAAYAAAAQAAAACgACAAYAAAARAAAACgACAAYAAAASAAAACgACAAYAAAATAAAACgACAAYAAAAUAAAACgACAAYAAAAVAAAACgACAAYAAAAWAAAACgACAAYAAAAXAAAACgACAAYAAAAYAAAACgACAAYAAAAZAAAACgACAAYAAAAaAAAACgACAAYAAAAbAAAACgACAAYAAAAcAAAACgACAAYAAAAdAAAACgACAAYAAAAeAAAACgACAAYAAAAfAAAACgACAAYAAAAgAAAACgACAAYAAAAhAAAACgACAAYAAAAiAAAACgACAAYAAAAjAAAACgACAAYAAAAjAAEACgACAAYAAAAjAAIACgACAAYAAAAjAAMACgACAAYAAAAjAAQACgACAAYAAAAjAAUACgACAAYAAAAjAAYACgACAAYAAAAjAAcACgACAAYAAAAjAAgACgACAAYAAAAjAAkACgACAAYAAAAjAAoACgACAAYAAAAjAAsACgACAAYAAAAjAAwACgACAAYAAAAjAA0ACgACAAYAAAAjAA4ACgACAAYAAAAjAA8ACgACAAYAAAAjABAACgACAAYAAAAjABEACgACAAYAAAAjABIACgACAAYAAAA=")
@@ -243,6 +258,7 @@ tile_set = SubResource("TileSet_joln0")
 [node name="Box" type="RigidBody2D" parent="."]
 position = Vector2(228, 209)
 can_sleep = false
+continuous_cd = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
 shape = SubResource("RectangleShape2D_bf7q6")
@@ -250,11 +266,13 @@ shape = SubResource("RectangleShape2D_bf7q6")
 [node name="Sprite2D" type="Sprite2D" parent="Box"]
 texture = ExtResource("3_joln0")
 
-[node name="GravityArea2D" type="Area2D" parent="."]
-position = Vector2(302, 192)
-gravity_space_override = 3
-script = ExtResource("4_bf7q6")
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(156, 263)
+script = ExtResource("5_hqvew")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea2D"]
-position = Vector2(20.5, -10.5)
-shape = SubResource("RectangleShape2D_joln0")
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("5_hxqi4")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_lh2ud")

@@ -14,6 +14,10 @@ config/name="Exocave"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventBus="*res://global/event_bus.gd"
+
 [display]
 
 window/size/viewport_width=640
