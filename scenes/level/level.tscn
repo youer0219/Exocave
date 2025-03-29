@@ -59,6 +59,7 @@ tile_set = ExtResource("3_sytrn")
 
 [node name="GravityFlipArea2D" parent="Items" instance=ExtResource("4_tf2q7")]
 position = Vector2(27, 83)
+gravity_state = Vector2(0, -1)
 
 [node name="WinArea2D" parent="Items" instance=ExtResource("5_pe1ox")]
 position = Vector2(180, 28)

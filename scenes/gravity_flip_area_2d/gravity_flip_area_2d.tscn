@@ -13,6 +13,7 @@ region = Rect2(170, 51, 17, 16)
 
 [node name="GravityFlipArea2D" type="Area2D"]
 script = ExtResource("1_tc25u")
+gravity_state = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f47bs")

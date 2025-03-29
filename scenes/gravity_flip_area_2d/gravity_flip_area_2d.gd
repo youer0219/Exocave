@@ -2,9 +2,16 @@
 extends Area2D
 class_name GravityFlipArea2D
 
+enum GravityState {
+	DOWN,
+	UP,
+	LEFT,
+	RIGHT,
+}
+
 @onready var image: Sprite2D = $Image
 
-@export var gravity_state:Vector2 = Vector2.UP:set = _set_gravity_state
+@export var gravity_state:GravityState = GravityState.UP:set = _set_gravity_state
 
 const UP_IMAGE_REGION_X := 170
 const DOWN_IMAGE_REGION_X := 187
@@ -13,22 +20,36 @@ const RIGHT_IMAGE_REGION_X := 221
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		EventBus.gravity_flip.emit(gravity_state)
+		EventBus.gravity_flip.emit(get_gravity_state_direction())
 
-func _set_gravity_state(value:Vector2):
+func _set_gravity_state(value:GravityState):
 	gravity_state = value
 	
 	if not is_node_ready():
 		await ready
 	
 	match gravity_state:
-		Vector2.DOWN:
+		GravityState.DOWN:
 			image.texture.region.position.x = DOWN_IMAGE_REGION_X
-		Vector2.UP:
+		GravityState.UP:
 			image.texture.region.position.x = UP_IMAGE_REGION_X
-		Vector2.LEFT:
+		GravityState.LEFT:
 			image.texture.region.position.x = RIGHT_IMAGE_REGION_X
-		Vector2.RIGHT:
+		GravityState.RIGHT:
 			image.texture.region.position.x = LEFT_IMAGE_REGION_X
 		_:
 			push_error("错误的gravity_state值！")
+
+func get_gravity_state_direction()->Vector2:
+	match gravity_state:
+		GravityState.DOWN:
+			return Vector2.DOWN
+		GravityState.UP:
+			return Vector2.UP
+		GravityState.LEFT:
+			return Vector2.LEFT
+		GravityState.RIGHT:
+			return Vector2.RIGHT
+		_:
+			push_error("错误的gravity_state值！")
+			return Vector2.DOWN

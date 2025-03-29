@@ -39,6 +39,7 @@ tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAY
 
 [node name="GravityFlipArea2D" parent="Items" index="0"]
 position = Vector2(37, 188)
+gravity_state = 1
 
 [node name="WinArea2D" parent="Items" index="1"]
 position = Vector2(372, 46)
