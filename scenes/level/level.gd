@@ -6,3 +6,7 @@ func _ready() -> void:
 		func():
 			print("next level or win!")
 	)
+
+
+func _on_button_pressed() -> void:
+	print("restart scene")

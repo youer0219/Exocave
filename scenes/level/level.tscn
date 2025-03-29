@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bhgetgieutmei"]
+[gd_scene load_steps=14 format=4 uid="uid://bhgetgieutmei"]
 
 [ext_resource type="Script" uid="uid://b1faq7nkveveq" path="res://scenes/level/level.gd" id="1_wcngd"]
 [ext_resource type="Script" uid="uid://v6jpyrttgo7t" path="res://components/grivate_area_2d.gd" id="2_xv074"]
@@ -7,9 +7,36 @@
 [ext_resource type="PackedScene" uid="uid://bwo22nee7dils" path="res://scenes/win_area_2d/win_area_2d.tscn" id="5_pe1ox"]
 [ext_resource type="Script" uid="uid://bbl6kv14s6ofg" path="res://scenes/win_area_2d/win_area_2d.gd" id="6_m0bv2"]
 [ext_resource type="PackedScene" uid="uid://dr0farklgsayx" path="res://scenes/player/player.tscn" id="7_b7m21"]
+[ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/kenney_cursor-pixel-pack/Tilemap/tilemap.png" id="8_xv074"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcngd"]
 size = Vector2(246, 143)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sytrn"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.980392, 0.980392, 0.509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf2q7"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.980392, 0.980392, 0.509804, 0.639216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xv074"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sytrn"]
+atlas = ExtResource("8_xv074")
+region = Rect2(153, 170, 16, 16)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_wcngd")
@@ -44,4 +71,18 @@ position = Vector2(97, 54)
 zoom = Vector2(2, 2)
 process_callback = 0
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="UI"]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_sytrn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tf2q7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xv074")
+icon = SubResource("AtlasTexture_sytrn")
+icon_alignment = 1
+
 [connection signal="body_entered" from="Items/WinArea2D" to="Items/WinArea2D" method="_on_body_entered"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
