@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=4 uid="uid://bhgetgieutmei"]
+
+[ext_resource type="Script" uid="uid://b1faq7nkveveq" path="res://scenes/level/level.gd" id="1_wcngd"]
+[ext_resource type="Script" uid="uid://v6jpyrttgo7t" path="res://components/grivate_area_2d.gd" id="2_xv074"]
+[ext_resource type="TileSet" uid="uid://bsrch7xw56pii" path="res://data/map/world.tres" id="3_sytrn"]
+[ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="4_tf2q7"]
+[ext_resource type="PackedScene" uid="uid://bwo22nee7dils" path="res://scenes/win_area_2d/win_area_2d.tscn" id="5_pe1ox"]
+[ext_resource type="Script" uid="uid://bbl6kv14s6ofg" path="res://scenes/win_area_2d/win_area_2d.gd" id="6_m0bv2"]
+[ext_resource type="PackedScene" uid="uid://dr0farklgsayx" path="res://scenes/player/player.tscn" id="7_b7m21"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcngd"]
+size = Vector2(246, 143)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_wcngd")
+
+[node name="GravityArea2D" type="Area2D" parent="."]
+position = Vector2(302, 192)
+gravity_space_override = 3
+script = ExtResource("2_xv074")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea2D"]
+position = Vector2(-185, -129)
+shape = SubResource("RectangleShape2D_wcngd")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAYAAAAAAAMACgACAAYAAAAAAAIACgACAAYAAAAAAAEACgACAAYAAAAAAAAACgACAAYAAAABAAAACgACAAUAAQACAAAACgACAAUAAQADAAAACgACAAUAAQAEAAAACgACAAUAAQAFAAAACgACAAUAAQAGAAAACgACAAUAAQAHAAAACgACAAUAAQAIAAAACgACAAUAAQAJAAAACgACAAUAAQAKAAAACgACAAUAAQALAAAACgACAAUAAQAMAAAACgACAAYAAAABAAUACgACAAUAAAACAAUACgACAAUAAAADAAUACgACAAUAAAAEAAUACgACAAUAAAAFAAUACgACAAUAAAAGAAUACgACAAUAAAAHAAUACgACAAYAAAAIAAUACgACAAYAAAAJAAUACgACAAYAAAAKAAUACgACAAYAAAAKAAQACgACAAYAAAAKAAMACgACAAYAAAAKAAIACgACAAUAAAALAAIACgACAAUAAAAIAAIACgACAAUAAAAJAAIACgACAAUAAAAIAAMACgACAAYAAAAJAAMACgACAAYAAAAJAAQACgACAAYAAAALAAMACgACAAYAAAALAAQACgACAAYAAAALAAUACgACAAYAAAABAAYACgACAAYAAAACAAYACgACAAYAAAADAAYACgACAAYAAAAEAAYACgACAAYAAAAFAAYACgACAAYAAAAGAAYACgACAAYAAAAHAAYACgACAAYAAAAIAAYACgACAAYAAAAJAAYACgACAAYAAAAKAAYACgACAAYAAAALAAYACgACAAYAAAAMAAYACgACAAYAAAAMAAUACgACAAYAAAAMAAQACgACAAYAAAAMAAMACgACAAYAAAAMAAIACgACAAYAAAAIAAQACgACAAYAAAAMAAEACgACAAYAAAAHAAQACgACAAUAAAA=")
+tile_set = ExtResource("3_sytrn")
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="GravityFlipArea2D" parent="Items" instance=ExtResource("4_tf2q7")]
+position = Vector2(27, 83)
+
+[node name="WinArea2D" parent="Items" instance=ExtResource("5_pe1ox")]
+position = Vector2(180, 28)
+script = ExtResource("6_m0bv2")
+
+[node name="Player" parent="." instance=ExtResource("7_b7m21")]
+position = Vector2(115, 46)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(97, 54)
+zoom = Vector2(2, 2)
+process_callback = 0
+
+[connection signal="body_entered" from="Items/WinArea2D" to="Items/WinArea2D" method="_on_body_entered"]
