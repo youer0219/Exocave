@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c7f1g5nnsjak2"]
+[gd_scene load_steps=13 format=4 uid="uid://c7f1g5nnsjak2"]
 
 [ext_resource type="Script" uid="uid://dyg0757ngv8an" path="res://test/world.gd" id="1_cnhom"]
 [ext_resource type="Texture2D" uid="uid://c5mpgyumntnm6" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap.png" id="1_qkrv2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://v6jpyrttgo7t" path="res://components/grivate_area_2d.gd" id="4_bf7q6"]
 [ext_resource type="Script" uid="uid://kjk2x7wbqktm" path="res://test/player.gd" id="5_hqvew"]
 [ext_resource type="Texture2D" uid="uid://baq7k7lfw62ed" path="res://assets/kenney_pixel-platformer/Tiles/Characters/tile_0011.png" id="5_hxqi4"]
+[ext_resource type="Script" uid="uid://bdp0gdg1s7fpu" path="res://components/rigidbody_2d_pusher.gd" id="7_hqvew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joln0"]
 size = Vector2(667, 381)
@@ -240,6 +241,7 @@ size = Vector2(18, 18)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cnhom")
+metadata/_edit_lock_ = true
 
 [node name="GravityArea2D" type="Area2D" parent="."]
 position = Vector2(302, 192)
@@ -276,3 +278,7 @@ flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_lh2ud")
+
+[node name="Rigidbody2DPusher" type="Node2D" parent="Player" node_paths=PackedStringArray("body")]
+script = ExtResource("7_hqvew")
+body = NodePath("..")
