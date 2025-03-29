@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr0farklgsayx"]
+
+[ext_resource type="Script" uid="uid://kjk2x7wbqktm" path="res://scenes/player/player.gd" id="1_gmlin"]
+[ext_resource type="Texture2D" uid="uid://baq7k7lfw62ed" path="res://assets/kenney_pixel-platformer/Tiles/Characters/tile_0011.png" id="2_lvxji"]
+[ext_resource type="Script" uid="uid://bdp0gdg1s7fpu" path="res://components/rigidbody_2d_pusher.gd" id="3_p47bc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh2ud"]
+size = Vector2(18, 18)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_gmlin")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lvxji")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lh2ud")
+
+[node name="Rigidbody2DPusher" type="Node2D" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("3_p47bc")
+body = NodePath("..")

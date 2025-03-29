@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwad2h4qrsxb7"]
+
+[ext_resource type="Script" uid="uid://boejsdf3ba6s5" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.gd" id="1_tc25u"]
+[ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/kenney_cursor-pixel-pack/Tilemap/tilemap.png" id="2_b316b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f47bs"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_833n7"]
+atlas = ExtResource("2_b316b")
+region = Rect2(152, 170, 18, 16)
+
+[node name="GravityFlipArea2D" type="Area2D"]
+script = ExtResource("1_tc25u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f47bs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_833n7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

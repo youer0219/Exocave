@@ -1,14 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://c7f1g5nnsjak2"]
+[gd_scene load_steps=11 format=4 uid="uid://c7f1g5nnsjak2"]
 
 [ext_resource type="Script" uid="uid://dyg0757ngv8an" path="res://test/world.gd" id="1_cnhom"]
 [ext_resource type="Texture2D" uid="uid://c5mpgyumntnm6" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap.png" id="1_qkrv2"]
 [ext_resource type="Texture2D" uid="uid://nph0kcsdaqnv" path="res://assets/kenney_pixel-platformer/Tiles/tile_0026.png" id="3_joln0"]
 [ext_resource type="Script" uid="uid://v6jpyrttgo7t" path="res://components/grivate_area_2d.gd" id="4_bf7q6"]
-[ext_resource type="Script" uid="uid://kjk2x7wbqktm" path="res://test/player.gd" id="5_hqvew"]
-[ext_resource type="Texture2D" uid="uid://baq7k7lfw62ed" path="res://assets/kenney_pixel-platformer/Tiles/Characters/tile_0011.png" id="5_hxqi4"]
-[ext_resource type="Script" uid="uid://bdp0gdg1s7fpu" path="res://components/rigidbody_2d_pusher.gd" id="7_hqvew"]
-[ext_resource type="Script" uid="uid://boejsdf3ba6s5" path="res://test/gravity_flip_area_2d.gd" id="8_f47bs"]
-[ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/kenney_cursor-pixel-pack/Tilemap/tilemap.png" id="9_f47bs"]
+[ext_resource type="PackedScene" uid="uid://dr0farklgsayx" path="res://scenes/player/player.tscn" id="5_truut"]
+[ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="8_833n7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joln0"]
 size = Vector2(667, 381)
@@ -238,15 +235,6 @@ sources/10 = SubResource("TileSetAtlasSource_cnhom")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bf7q6"]
 size = Vector2(18, 18)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh2ud"]
-size = Vector2(18, 18)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_f47bs"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_833n7"]
-atlas = ExtResource("9_f47bs")
-region = Rect2(152, 170, 18, 16)
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_cnhom")
 metadata/_edit_lock_ = true
@@ -275,42 +263,13 @@ shape = SubResource("RectangleShape2D_bf7q6")
 [node name="Sprite2D" type="Sprite2D" parent="Box"]
 texture = ExtResource("3_joln0")
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("5_truut")]
 position = Vector2(156, 263)
-script = ExtResource("5_hqvew")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("5_hxqi4")
-flip_v = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_lh2ud")
-
-[node name="Rigidbody2DPusher" type="Node2D" parent="Player" node_paths=PackedStringArray("body")]
-script = ExtResource("7_hqvew")
-body = NodePath("..")
 
 [node name="GravityFlipArea2Ds" type="Node2D" parent="."]
 
-[node name="GravityFlipArea2D" type="Area2D" parent="GravityFlipArea2Ds"]
+[node name="GravityFlipArea2D" parent="GravityFlipArea2Ds" instance=ExtResource("8_833n7")]
 position = Vector2(62, 332)
-script = ExtResource("8_f47bs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityFlipArea2Ds/GravityFlipArea2D"]
-shape = SubResource("CircleShape2D_f47bs")
-
-[node name="Sprite2D" type="Sprite2D" parent="GravityFlipArea2Ds/GravityFlipArea2D"]
-texture = SubResource("AtlasTexture_833n7")
-
-[node name="GravityFlipArea2D2" type="Area2D" parent="GravityFlipArea2Ds"]
-position = Vector2(295, 31)
-script = ExtResource("8_f47bs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityFlipArea2Ds/GravityFlipArea2D2"]
-shape = SubResource("CircleShape2D_f47bs")
-
-[node name="Sprite2D" type="Sprite2D" parent="GravityFlipArea2Ds/GravityFlipArea2D2"]
-texture = SubResource("AtlasTexture_833n7")
-
-[connection signal="body_entered" from="GravityFlipArea2Ds/GravityFlipArea2D" to="GravityFlipArea2Ds/GravityFlipArea2D" method="_on_body_entered"]
-[connection signal="body_entered" from="GravityFlipArea2Ds/GravityFlipArea2D2" to="GravityFlipArea2Ds/GravityFlipArea2D2" method="_on_body_entered"]
+[node name="GravityFlipArea2D2" parent="GravityFlipArea2Ds" instance=ExtResource("8_833n7")]
+position = Vector2(293, 31)
