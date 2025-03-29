@@ -21,12 +21,11 @@ EventBus="*res://global/event_bus.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/viewport_width=384
+window/size/viewport_height=216
+window/size/window_width_override=768
+window/size/window_height_override=432
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 
 [layer_names]

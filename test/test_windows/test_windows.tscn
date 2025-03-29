@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5r7yp0ao74p7"]
+
+[ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/kenney_cursor-pixel-pack/Tilemap/tilemap.png" id="1_447cc"]
+
+[node name="TestWindows" type="Node2D"]
+
+[node name="Tilemap" type="Sprite2D" parent="."]
+texture = ExtResource("1_447cc")
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dyg0757ngv8an" path="res://test/world.gd" id="1_cnhom"]
 [ext_resource type="Texture2D" uid="uid://c5mpgyumntnm6" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap.png" id="1_qkrv2"]
-[ext_resource type="Texture2D" uid="uid://nph0kcsdaqnv" path="res://assets/kenney_pixel-platformer/Tiles/tile_0026.png" id="3_joln0"]
 [ext_resource type="Script" uid="uid://v6jpyrttgo7t" path="res://components/grivate_area_2d.gd" id="4_bf7q6"]
+[ext_resource type="PackedScene" uid="uid://bwo22nee7dils" path="res://scenes/win_area_2d/win_area_2d.tscn" id="5_hqvew"]
 [ext_resource type="PackedScene" uid="uid://dr0farklgsayx" path="res://scenes/player/player.tscn" id="5_truut"]
+[ext_resource type="Script" uid="uid://bbl6kv14s6ofg" path="res://scenes/win_area_2d/win_area_2d.gd" id="6_truut"]
 [ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="8_833n7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joln0"]
-size = Vector2(667, 381)
+size = Vector2(256, 144)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cnhom"]
 texture = ExtResource("1_qkrv2")
@@ -232,44 +233,40 @@ tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
 sources/10 = SubResource("TileSetAtlasSource_cnhom")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bf7q6"]
-size = Vector2(18, 18)
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_cnhom")
 metadata/_edit_lock_ = true
 
-[node name="GravityArea2D" type="Area2D" parent="."]
+[node name="Level" type="Node2D" parent="."]
+
+[node name="GravityArea2D" type="Area2D" parent="Level"]
 position = Vector2(302, 192)
 gravity_space_override = 3
 script = ExtResource("4_bf7q6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea2D"]
-position = Vector2(20.5, -10.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/GravityArea2D"]
+position = Vector2(-185, -129)
 shape = SubResource("RectangleShape2D_joln0")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAABMACgACAAYAAAABABMACgACAAYAAAACABMACgACAAYAAAADABMACgACAAYAAAAEABMACgACAAYAAAAFABMACgACAAYAAAAGABMACgACAAYAAAAHABMACgACAAYAAAAIABMACgACAAYAAAAJABMACgACAAYAAAAKABMACgACAAYAAAALABMACgACAAYAAAAMABMACgACAAYAAAANABMACgACAAYAAAAOABMACgACAAYAAAAPABMACgACAAYAAAAQABMACgACAAYAAAARABMACgACAAYAAAASABMACgACAAYAAAATABMACgACAAYAAAAUABMACgACAAYAAAAVABMACgACAAYAAAAWABMACgACAAYAAAAXABMACgACAAYAAAAYABMACgACAAYAAAAZABMACgACAAYAAAAaABMACgACAAYAAAAbABMACgACAAYAAAAcABMACgACAAYAAAAdABMACgACAAYAAAAeABMACgACAAYAAAAfABMACgACAAYAAAAgABMACgACAAYAAAAhABMACgACAAYAAAAiABMACgACAAYAAAAjABMACgACAAYAAAAAABIACgACAAYAAAAAABEACgACAAYAAAAAABAACgACAAYAAAAAAA8ACgACAAYAAAAAAA4ACgACAAYAAAAAAA0ACgACAAYAAAAAAAwACgACAAYAAAAAAAsACgACAAYAAAAAAAoACgACAAYAAAAAAAkACgACAAYAAAAAAAgACgACAAYAAAAAAAcACgACAAYAAAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAYAAAAAAAMACgACAAYAAAAAAAIACgACAAYAAAAAAAEACgACAAYAAAAAAAAACgACAAYAAAABAAAACgACAAYAAAACAAAACgACAAYAAAADAAAACgACAAYAAAAEAAAACgACAAYAAAAFAAAACgACAAYAAAAGAAAACgACAAYAAAAHAAAACgACAAYAAAAIAAAACgACAAYAAAAJAAAACgACAAYAAAAKAAAACgACAAYAAAALAAAACgACAAYAAAAMAAAACgACAAYAAAANAAAACgACAAYAAAAOAAAACgACAAYAAAAPAAAACgACAAYAAAAQAAAACgACAAYAAAARAAAACgACAAYAAAASAAAACgACAAYAAAATAAAACgACAAYAAAAUAAAACgACAAYAAAAVAAAACgACAAYAAAAWAAAACgACAAYAAAAXAAAACgACAAYAAAAYAAAACgACAAYAAAAZAAAACgACAAYAAAAaAAAACgACAAYAAAAbAAAACgACAAYAAAAcAAAACgACAAYAAAAdAAAACgACAAYAAAAeAAAACgACAAYAAAAfAAAACgACAAYAAAAgAAAACgACAAYAAAAhAAAACgACAAYAAAAiAAAACgACAAYAAAAjAAAACgACAAYAAAAjAAEACgACAAYAAAAjAAIACgACAAYAAAAjAAMACgACAAYAAAAjAAQACgACAAYAAAAjAAUACgACAAYAAAAjAAYACgACAAYAAAAjAAcACgACAAYAAAAjAAgACgACAAYAAAAjAAkACgACAAYAAAAjAAoACgACAAYAAAAjAAsACgACAAYAAAAjAAwACgACAAYAAAAjAA0ACgACAAYAAAAjAA4ACgACAAYAAAAjAA8ACgACAAYAAAAjABAACgACAAYAAAAjABEACgACAAYAAAAjABIACgACAAYAAAA=")
+[node name="TileMapLayer" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAYAAAAAAAMACgACAAYAAAAAAAIACgACAAYAAAAAAAEACgACAAYAAAAAAAAACgACAAYAAAABAAAACgACAAYAAAACAAAACgACAAYAAAADAAAACgACAAYAAAAEAAAACgACAAYAAAAFAAAACgACAAYAAAAGAAAACgACAAYAAAAHAAAACgACAAYAAAAIAAAACgACAAYAAAAJAAAACgACAAYAAAAKAAAACgACAAYAAAALAAAACgACAAYAAAAMAAAACgACAAYAAAABAAUACgACAAUAAAACAAUACgACAAUAAAADAAUACgACAAUAAAAEAAUACgACAAUAAAAFAAUACgACAAUAAAAGAAUACgACAAUAAAAHAAUACgACAAYAAAAIAAUACgACAAYAAAAJAAUACgACAAYAAAAKAAUACgACAAYAAAAKAAQACgACAAYAAAAKAAMACgACAAYAAAAKAAIACgACAAUAAAALAAIACgACAAUAAAAIAAIACgACAAUAAAAJAAIACgACAAUAAAAIAAMACgACAAYAAAAJAAMACgACAAYAAAAJAAQACgACAAYAAAALAAMACgACAAYAAAALAAQACgACAAYAAAALAAUACgACAAYAAAABAAYACgACAAYAAAACAAYACgACAAYAAAADAAYACgACAAYAAAAEAAYACgACAAYAAAAFAAYACgACAAYAAAAGAAYACgACAAYAAAAHAAYACgACAAYAAAAIAAYACgACAAYAAAAJAAYACgACAAYAAAAKAAYACgACAAYAAAALAAYACgACAAYAAAAMAAYACgACAAYAAAAMAAUACgACAAYAAAAMAAQACgACAAYAAAAMAAMACgACAAYAAAAMAAIACgACAAYAAAAIAAQACgACAAYAAAAMAAEACgACAAYAAAAHAAQACgACAAUAAAA=")
 tile_set = SubResource("TileSet_joln0")
 
-[node name="Box" type="RigidBody2D" parent="."]
-position = Vector2(228, 209)
-can_sleep = false
-continuous_cd = 1
+[node name="Items" type="Node2D" parent="Level"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
-shape = SubResource("RectangleShape2D_bf7q6")
+[node name="GravityFlipArea2D" parent="Level/Items" instance=ExtResource("8_833n7")]
+position = Vector2(27, 83)
 
-[node name="Sprite2D" type="Sprite2D" parent="Box"]
-texture = ExtResource("3_joln0")
+[node name="WinArea2D" parent="Level/Items" instance=ExtResource("5_hqvew")]
+position = Vector2(180, 28)
+script = ExtResource("6_truut")
 
-[node name="Player" parent="." instance=ExtResource("5_truut")]
-position = Vector2(156, 263)
+[node name="Player" parent="Level" instance=ExtResource("5_truut")]
+position = Vector2(115, 46)
 
-[node name="GravityFlipArea2Ds" type="Node2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Level"]
+position = Vector2(97, 54)
+zoom = Vector2(2, 2)
+process_callback = 0
 
-[node name="GravityFlipArea2D" parent="GravityFlipArea2Ds" instance=ExtResource("8_833n7")]
-position = Vector2(62, 332)
-
-[node name="GravityFlipArea2D2" parent="GravityFlipArea2Ds" instance=ExtResource("8_833n7")]
-position = Vector2(293, 31)
+[connection signal="body_entered" from="Level/Items/WinArea2D" to="Level/Items/WinArea2D" method="_on_body_entered"]
