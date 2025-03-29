@@ -14,6 +14,6 @@ func _set_gravity_state(value:GravityState):
 
 func _ready() -> void:
 	EventBus.gravity_flip.connect(
-		func():
-			gravity_state = GravityState.DOWN if gravity_state == GravityState.UP else GravityState.UP
+		func(new_gravity_state:GravityState):
+			gravity_state = new_gravity_state
 	)

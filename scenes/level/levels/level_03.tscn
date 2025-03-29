@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=4 uid="uid://da0jn4lfseg10"]
+
+[ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_b2jqh"]
+[ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="2_8p5re"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2jqh"]
+size = Vector2(409, 249.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p5re"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.980392, 0.980392, 0.509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1p6c"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.980392, 0.980392, 0.509804, 0.639216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vo70"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Level03" instance=ExtResource("1_b2jqh")]
+
+[node name="CollisionShape2D" parent="GravityArea2D" index="0"]
+position = Vector2(-103.5, -75.75)
+shape = SubResource("RectangleShape2D_b2jqh")
+
+[node name="TileMapLayer" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAYAAAAAAAMACgACAAYAAAAAAAIACgACAAYAAAAAAAEACgACAAYAAAAAAAAACgACAAYAAAABAAAACgACAAYAAAACAAAACgACAAYAAAADAAAACgACAAYAAAAEAAAACgACAAYAAAAFAAAACgACAAYAAAAGAAAACgACAAYAAAAHAAAACgACAAYAAAAIAAAACgACAAYAAAAJAAAACgACAAYAAAAKAAAACgACAAYAAAALAAAACgACAAYAAAAMAAAACgACAAYAAAAAAAcACgACAAYAAAAAAAgACgACAAYAAAAAAAkACgACAAYAAAAAAAoACgACAAYAAAAAAAsACgACAAYAAAAAAAwACgACAAYAAAANAAAACgACAAYAAAAOAAAACgACAAYAAAAPAAAACgACAAYAAAAQAAAACgACAAYAAAARAAAACgACAAYAAAASAAAACgACAAYAAAATAAAACgACAAYAAAAUAAAACgACAAYAAAAVAAAACgACAAYAAAAVAAEACgACAAYAAAAVAAIACgACAAYAAAAVAAMACgACAAYAAAAVAAQACgACAAYAAAAVAAUACgACAAYAAAAVAAYACgACAAYAAAAVAAcACgACAAYAAAAVAAgACgACAAYAAAAVAAkACgACAAYAAAAVAAoACgACAAYAAAAVAAsACgACAAYAAAABAAwACgACAAYAAAACAAwACgACAAYAAAADAAwACgACAAYAAAAEAAwACgACAAYAAAAFAAwACgACAAYAAAAGAAwACgACAAYAAAAHAAwACgACAAYAAAAIAAwACgACAAYAAAAJAAwACgACAAYAAAAKAAwACgACAAYAAAALAAwACgACAAYAAAAMAAwACgACAAYAAAANAAwACgACAAYAAAAOAAwACgACAAYAAAAPAAwACgACAAYAAAAQAAwACgACAAYAAAARAAwACgACAAYAAAASAAwACgACAAYAAAATAAwACgACAAYAAAAUAAwACgACAAYAAAAVAAwACgACAAYAAAA=")
+
+[node name="GravityFlipArea2D" parent="Items" index="0"]
+position = Vector2(64, 202)
+
+[node name="GravityFlipArea2D2" parent="Items" index="1" instance=ExtResource("2_8p5re")]
+position = Vector2(50, 27)
+gravity_state = 1
+
+[node name="Camera2D" parent="." index="4"]
+position = Vector2(192, 113)
+zoom = Vector2(1, 1)
+
+[node name="Button" parent="UI" index="0"]
+theme_override_styles/hover = SubResource("StyleBoxFlat_8p5re")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v1p6c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1vo70")
