@@ -8,8 +8,12 @@ enum GravityState {
 
 @export var gravity_state:GravityState = GravityState.DOWN:set = _set_gravity_state
 
-var default_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 func _set_gravity_state(value:GravityState):
 	gravity_state = value
 	gravity_direction.y = gravity_state
+
+func _ready() -> void:
+	EventBus.gravity_flip.connect(
+		func():
+			gravity_state = GravityState.DOWN if gravity_state == GravityState.UP else GravityState.UP
+	)
