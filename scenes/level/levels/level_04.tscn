@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://mbu2d847ny6v"]
+[gd_scene load_steps=8 format=4 uid="uid://mbu2d847ny6v"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_l23p1"]
 [ext_resource type="PackedScene" uid="uid://bkvo1v8o26fam" path="res://scenes/box/box.tscn" id="2_j3lvj"]
+[ext_resource type="PackedScene" uid="uid://dd2abswysq2tq" path="res://scenes/one_way_platformer/one_way_platformer.tscn" id="3_wbvef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l23p1"]
 size = Vector2(555, 311.5)
@@ -39,10 +40,12 @@ tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAY
 
 [node name="GravityFlipArea2D" parent="Items" index="0"]
 position = Vector2(44, 258)
-gravity_state = 1
 
 [node name="Box" parent="Items" index="2" instance=ExtResource("2_j3lvj")]
 position = Vector2(180, 149)
+
+[node name="OneWayPlatformer" parent="Items" index="3" instance=ExtResource("3_wbvef")]
+position = Vector2(121, 243)
 
 [node name="Camera2D" parent="." index="4"]
 position = Vector2(256, 145)

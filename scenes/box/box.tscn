@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkvo1v8o26fam"]
 
-[ext_resource type="Texture2D" uid="uid://nph0kcsdaqnv" path="res://assets/kenney_pixel-platformer/Tiles/tile_0026.png" id="1_dry3k"]
 [ext_resource type="Script" uid="uid://chsvjd2lrecmv" path="res://scenes/box/box.gd" id="1_vf6jd"]
+[ext_resource type="Texture2D" uid="uid://nhigfcgcg4o1" path="res://assets/kenney_pixel-platformer/Tiles/tile_0009.png" id="2_vf6jd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bf7q6"]
 size = Vector2(18, 18)
@@ -15,4 +15,4 @@ script = ExtResource("1_vf6jd")
 shape = SubResource("RectangleShape2D_bf7q6")
 
 [node name="Image" type="Sprite2D" parent="."]
-texture = ExtResource("1_dry3k")
+texture = ExtResource("2_vf6jd")

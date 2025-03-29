@@ -33,9 +33,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 position = Vector2(-187, -126.5)
 shape = SubResource("RectangleShape2D_qukfu")
 
-[node name="GravityFlipArea2D" parent="Items" index="0"]
-gravity_state = 1
-
 [node name="Button" parent="UI" index="0"]
 theme_override_styles/hover = SubResource("StyleBoxFlat_qukfu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7ugam")
