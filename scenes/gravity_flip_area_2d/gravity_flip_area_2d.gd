@@ -27,8 +27,8 @@ func _set_gravity_state(value:Vector2):
 		Vector2.UP:
 			image.texture.region.position.x = UP_IMAGE_REGION_X
 		Vector2.LEFT:
-			image.texture.region.position.x = LEFT_IMAGE_REGION_X
-		Vector2.RIGHT:
 			image.texture.region.position.x = RIGHT_IMAGE_REGION_X
+		Vector2.RIGHT:
+			image.texture.region.position.x = LEFT_IMAGE_REGION_X
 		_:
 			push_error("错误的gravity_state值！")
