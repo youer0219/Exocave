@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkvo1v8o26fam"]
+[gd_scene load_steps=4 format=3 uid="uid://bkvo1v8o26fam"]
 
 [ext_resource type="Texture2D" uid="uid://nph0kcsdaqnv" path="res://assets/kenney_pixel-platformer/Tiles/tile_0026.png" id="1_dry3k"]
+[ext_resource type="Script" uid="uid://chsvjd2lrecmv" path="res://scenes/box/box.gd" id="1_vf6jd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bf7q6"]
 size = Vector2(18, 18)
@@ -8,6 +9,7 @@ size = Vector2(18, 18)
 [node name="Box" type="RigidBody2D"]
 can_sleep = false
 continuous_cd = 1
+script = ExtResource("1_vf6jd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bf7q6")

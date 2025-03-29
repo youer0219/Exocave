@@ -13,7 +13,10 @@ func change_scene_to_next_level():
 		return
 	
 	curr_level_index += 1
-	get_tree().call_deferred("change_scene_to_packed",levels[curr_level_index])
+	if levels[curr_level_index] != null:
+		get_tree().call_deferred("change_scene_to_packed",levels[curr_level_index])
+	else:
+		push_error("需要切换到的场景为空！")
 
 func reload_current_level():
 	get_tree().call_deferred("change_scene_to_packed",levels[curr_level_index])
