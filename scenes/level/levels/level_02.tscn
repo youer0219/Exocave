@@ -41,7 +41,7 @@ tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAY
 position = Vector2(29, 118)
 
 [node name="WinArea2D" parent="Items" index="1"]
-position = Vector2(235, 28)
+position = Vector2(240, 28)
 
 [node name="Box" parent="Items" index="2" instance=ExtResource("2_tltkb")]
 position = Vector2(197, 115)

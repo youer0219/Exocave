@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwo22nee7dils"]
+[gd_scene load_steps=4 format=3 uid="uid://bwo22nee7dils"]
 
+[ext_resource type="Script" uid="uid://bbl6kv14s6ofg" path="res://scenes/win_area_2d/win_area_2d.gd" id="1_nfahv"]
 [ext_resource type="Texture2D" uid="uid://ccr1nf5nxr2o4" path="res://assets/kenney_pixel-platformer/Tiles/tile_0088.png" id="1_o8jyh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqvew"]
 
-[node name="EndArea2D" type="Area2D"]
+[node name="WinArea2D" type="Area2D"]
+script = ExtResource("1_nfahv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hqvew")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_o8jyh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
