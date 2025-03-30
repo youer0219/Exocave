@@ -21,8 +21,8 @@ buses/stretch/scale_mode="fractional"
 
 [autoload]
 
-EventBus="*res://global/event_bus.gd"
-SceneManager="*res://global/SceneManager.tscn"
+EventBus="*res://global/event_bus/event_bus.gd"
+SceneManager="*res://global/scene_manager/SceneManager.tscn"
 MusicPlayer="*res://global/audio_player/MusicPlayer.tscn"
 SfxPlayer="*res://global/audio_player/SFXPlayer.tscn"
 
