@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 // 主星星控制参数
-uniform vec4 bg_color : source_color = vec4(0.0,0.0,0.0,255.0);
+uniform vec4 bg_color : source_color = vec4(0.0,0.0,0.0,1.0);
 uniform float glare_intensity : hint_range(0, 1) = 0.0;
 uniform float star_prob : hint_range(0, 1) = 1.0;
 uniform float star_size : hint_range(0.5, 2.0) = 1.0; // 🚀主星星尺寸系数

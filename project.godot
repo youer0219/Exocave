@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Exocave"
-run/main_scene="uid://c7f1g5nnsjak2"
+run/main_scene="uid://dnubsepx1s70s"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/stretch/scale_mode="fractional"
 
 [autoload]
 

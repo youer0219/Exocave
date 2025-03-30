@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7f1g5nnsjak2"]
-
-[ext_resource type="PackedScene" uid="uid://c0fgq1mj8r5e7" path="res://scenes/level/levels/level_01.tscn" id="1_qkrv2"]
-
-[node name="World" type="Node2D"]
-metadata/_edit_lock_ = true
-
-[node name="Level01" parent="." instance=ExtResource("1_qkrv2")]

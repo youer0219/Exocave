@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnubsepx1s70s"]
+[gd_scene load_steps=9 format=3 uid="uid://dnubsepx1s70s"]
 
-[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://scenes/main_menu/stars.gdshader" id="1_isws5"]
+[ext_resource type="Script" uid="uid://bkwo6530pkeja" path="res://scenes/main_menu/main_menu.gd" id="1_axelx"]
+[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="1_isws5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axelx"]
 shader = ExtResource("1_isws5")
-shader_parameter/bg_color = Color(0, 0, 0, 255)
+shader_parameter/bg_color = Color(0, 0, 0, 1)
 shader_parameter/glare_intensity = 0.0
 shader_parameter/star_prob = 1.0
 shader_parameter/star_size = 1.0
@@ -45,6 +46,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_axelx")
+first_level_name = "level_01"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_axelx")
@@ -99,3 +102,5 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = SubResource("StyleBoxFlat_cdyji")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_isws5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_axelx")
+
+[connection signal="pressed" from="VBoxContainer/Label/Button" to="." method="_on_button_pressed"]
