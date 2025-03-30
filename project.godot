@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 
+[gui]
+
+theme/custom_font="uid://daaaamdwiners"
+
 [layer_names]
 
 2d_physics/layer_1="world"
