@@ -23,6 +23,8 @@ buses/stretch/scale_mode="fractional"
 
 EventBus="*res://global/event_bus.gd"
 SceneManager="*res://global/SceneManager.tscn"
+MusicPlayer="*res://global/audio_player/MusicPlayer.tscn"
+SfxPlayer="*res://global/audio_player/SFXPlayer.tscn"
 
 [display]
 
@@ -33,6 +35,10 @@ window/size/window_height_override=864
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [gui]
 
