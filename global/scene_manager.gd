@@ -2,6 +2,8 @@ extends Node
 
 @export var levels:Array[PackedScene]
 
+@export var test_level:PackedScene
+
 var curr_level_index := 0
 
 func is_last_level()->bool:
@@ -19,4 +21,9 @@ func change_scene_to_next_level():
 		push_error("需要切换到的场景为空！")
 
 func reload_current_level():
+	if test_level:
+		get_tree().call_deferred("change_scene_to_packed",test_level)
+		print("test level")
+		return
+	
 	get_tree().call_deferred("change_scene_to_packed",levels[curr_level_index])
