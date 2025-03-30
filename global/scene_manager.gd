@@ -1,29 +1,23 @@
 extends Node
 
-@export var levels:Array[PackedScene]
 
+
+@export var levels_dic:Dictionary[String,PackedScene]
 @export var test_level:PackedScene
 
-var curr_level_index := 0
-
-func is_last_level()->bool:
-	return curr_level_index == levels.size() - 1
-
-func change_scene_to_next_level():
-	if is_last_level():
-		print("已经是最后一关了")
+func change_scene_to_level(level_name:String):
+	if not levels_dic.has(level_name):
+		print("level_name not exit!")
 		return
 	
-	curr_level_index += 1
-	if levels[curr_level_index] != null:
-		get_tree().call_deferred("change_scene_to_packed",levels[curr_level_index])
-	else:
-		push_error("需要切换到的场景为空！")
-
-func reload_current_level():
 	if test_level:
 		get_tree().call_deferred("change_scene_to_packed",test_level)
 		print("test level")
 		return
 	
-	get_tree().call_deferred("change_scene_to_packed",levels[curr_level_index])
+	var new_level = levels_dic[level_name]
+	
+	if new_level != null:
+		get_tree().call_deferred("change_scene_to_packed",new_level)
+	else:
+		push_error("需要切换到的场景为空！")

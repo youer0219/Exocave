@@ -30,6 +30,8 @@ resource_local_to_scene = true
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Level03" instance=ExtResource("1_b2jqh")]
+level_name = "level_03"
+next_level_name = "level_04"
 
 [node name="CollisionShape2D" parent="GravityArea2D" index="0"]
 position = Vector2(-103.5, -75.75)

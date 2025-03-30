@@ -8,4 +8,9 @@
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_kheom")
-levels = Array[PackedScene]([ExtResource("2_yhn74"), ExtResource("3_sk01j"), ExtResource("4_sk01j"), ExtResource("5_2xub4")])
+levels_dic = Dictionary[String, PackedScene]({
+"level_01": ExtResource("2_yhn74"),
+"level_02": ExtResource("3_sk01j"),
+"level_03": ExtResource("4_sk01j"),
+"level_04": ExtResource("5_2xub4")
+})
