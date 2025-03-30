@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0fgq1mj8r5e7"]
+[gd_scene load_steps=7 format=3 uid="uid://c0fgq1mj8r5e7"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_qukfu"]
+[ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="2_7ugam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qukfu"]
 size = Vector2(246, 143)
@@ -34,6 +35,9 @@ next_level_name = "level_02"
 [node name="CollisionShape2D" parent="GravityArea2D" index="0"]
 position = Vector2(-187, -126.5)
 shape = SubResource("RectangleShape2D_qukfu")
+
+[node name="GravityFlipArea2D" parent="Items/GravityFlipArea2Ds" index="0" instance=ExtResource("2_7ugam")]
+position = Vector2(28, 82)
 
 [node name="Button" parent="UI" index="0"]
 theme_override_styles/hover = SubResource("StyleBoxFlat_qukfu")

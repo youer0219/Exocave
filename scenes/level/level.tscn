@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://bhgetgieutmei"]
+[gd_scene load_steps=12 format=4 uid="uid://bhgetgieutmei"]
 
 [ext_resource type="Script" uid="uid://b1faq7nkveveq" path="res://scenes/level/level.gd" id="1_wcngd"]
 [ext_resource type="Script" uid="uid://v6jpyrttgo7t" path="res://components/grivate_area_2d.gd" id="2_xv074"]
 [ext_resource type="TileSet" uid="uid://bsrch7xw56pii" path="res://data/map/world.tres" id="3_sytrn"]
-[ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="4_tf2q7"]
 [ext_resource type="PackedScene" uid="uid://bwo22nee7dils" path="res://scenes/win_area_2d/win_area_2d.tscn" id="5_pe1ox"]
 [ext_resource type="PackedScene" uid="uid://dr0farklgsayx" path="res://scenes/player/player.tscn" id="7_b7m21"]
 [ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/kenney_cursor-pixel-pack/Tilemap/tilemap.png" id="8_xv074"]
@@ -58,11 +57,14 @@ tile_set = ExtResource("3_sytrn")
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="GravityFlipArea2D" parent="Items" instance=ExtResource("4_tf2q7")]
-position = Vector2(27, 83)
-
 [node name="WinArea2D" parent="Items" instance=ExtResource("5_pe1ox")]
 position = Vector2(180, 28)
+
+[node name="GravityFlipArea2Ds" type="Node2D" parent="Items"]
+
+[node name="Boxs" type="Node2D" parent="Items"]
+
+[node name="OneWayPlatformers" type="Node2D" parent="Items"]
 
 [node name="Player" parent="." instance=ExtResource("7_b7m21")]
 position = Vector2(115, 46)

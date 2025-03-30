@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://dxu5dmsl7hp3"]
+[gd_scene load_steps=8 format=4 uid="uid://dxu5dmsl7hp3"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_5sflw"]
+[ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="2_fpvcb"]
 [ext_resource type="PackedScene" uid="uid://bkvo1v8o26fam" path="res://scenes/box/box.tscn" id="2_tltkb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sflw"]
@@ -39,13 +40,13 @@ shape = SubResource("RectangleShape2D_5sflw")
 [node name="TileMapLayer" parent="." index="1"]
 tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAYAAAAAAAMACgACAAYAAAAAAAIACgACAAYAAAAAAAEACgACAAYAAAAAAAAACgACAAYAAAABAAAACgACAAEAAQACAAAACgACAAEAAQADAAAACgACAAEAAQAEAAAACgACAAEAAQAFAAAACgACAAEAAQAGAAAACgACAAEAAQAHAAAACgACAAEAAQAIAAAACgACAAYAAAAJAAAACgACAAEAAQAKAAAACgACAAEAAQALAAAACgACAAEAAQAMAAAACgACAAEAAQAKAAQACgACAAEAAAAIAAIACgACAAEAAQAJAAQACgACAAEAAAALAAQACgACAAEAAAAMAAQACgACAAEAAAAMAAIACgACAAEAAAAIAAQACgACAAEAAAAHAAQACgACAAEAAAAAAAcACgACAAYAAAANAAAACgACAAEAAQAOAAAACgACAAEAAQAOAAYACgACAAYAAAALAAcACgACAAEAAAAMAAcACgACAAEAAAANAAcACgACAAEAAAAOAAcACgACAAYAAAAOAAIACgACAAEAAAAKAAcACgACAAEAAAAJAAcACgACAAEAAAAIAAcACgACAAEAAAABAAcACgACAAEAAAACAAcACgACAAEAAAADAAcACgACAAEAAAAEAAcACgACAAEAAAAFAAcACgACAAEAAAAGAAcACgACAAEAAAAOAAUACgACAAYAAAAOAAQACgACAAYAAAAOAAMACgACAAYAAAAHAAcACgACAAEAAAANAAIACgACAAEAAAAIAAEACgACAAYAAAANAAQACgACAAEAAAAPAAAACgACAAYAAAAPAAEACgACAAYAAAAPAAIACgACAAYAAAAPAAMACgACAAYAAAAPAAQACgACAAYAAAAPAAUACgACAAYAAAAPAAYACgACAAYAAAAPAAcACgACAAYAAAA=")
 
-[node name="GravityFlipArea2D" parent="Items" index="0"]
-position = Vector2(29, 118)
-
-[node name="WinArea2D" parent="Items" index="1"]
+[node name="WinArea2D" parent="Items" index="0"]
 position = Vector2(240, 28)
 
-[node name="Box" parent="Items" index="2" instance=ExtResource("2_tltkb")]
+[node name="GravityFlipArea2D" parent="Items/GravityFlipArea2Ds" index="0" instance=ExtResource("2_fpvcb")]
+position = Vector2(28, 118)
+
+[node name="Box" parent="Items/Boxs" index="0" instance=ExtResource("2_tltkb")]
 position = Vector2(197, 115)
 
 [node name="Player" parent="." index="3"]
