@@ -20,7 +20,3 @@ script = ExtResource("1_v0d2y")
 [node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="."]
 
 [node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="."]
-
-[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="."]
-
-[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="."]

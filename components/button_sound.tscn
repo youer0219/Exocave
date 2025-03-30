@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://djs38s3xo5gf0"]
+
+[ext_resource type="Script" uid="uid://cl1hjwwd1dnat" path="res://components/button_sound.gd" id="1_6khlk"]
+[ext_resource type="AudioStream" uid="uid://dd3xw31mxi0ph" path="res://assets/audio/sounds/click1.ogg" id="2_wlqcr"]
+[ext_resource type="AudioStream" uid="uid://0b7l50r1y8vu" path="res://assets/audio/sounds/switch5.ogg" id="3_lvuc0"]
+
+[node name="ButtonSound" type="Node" node_paths=PackedStringArray("button")]
+script = ExtResource("1_6khlk")
+button = NodePath("")
+click_sound = ExtResource("2_wlqcr")
+mouse_enter_sound = ExtResource("3_lvuc0")

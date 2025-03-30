@@ -3,6 +3,7 @@ extends Node2D
 @export var level_name:String
 @export var next_level_name:String
 
+
 func _ready() -> void:
 	EventBus.level_win.connect(
 		func():

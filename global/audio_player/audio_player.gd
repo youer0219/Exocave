@@ -2,6 +2,7 @@ extends Node
 
 func play(audio: AudioStream,single = false,fade_in_time:float = 1.0 ):
 	if not audio:
+		print("no audio!")
 		return
 	
 	if single:

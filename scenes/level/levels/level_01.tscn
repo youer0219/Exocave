@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0fgq1mj8r5e7"]
+[gd_scene load_steps=8 format=3 uid="uid://c0fgq1mj8r5e7"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_qukfu"]
 [ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="2_7ugam"]
+[ext_resource type="PackedScene" uid="uid://djs38s3xo5gf0" path="res://components/button_sound.tscn" id="3_ujlqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qukfu"]
 size = Vector2(246, 143)
@@ -43,3 +44,6 @@ position = Vector2(28, 82)
 theme_override_styles/hover = SubResource("StyleBoxFlat_qukfu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7ugam")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujlqr")
+
+[node name="ButtonSound" parent="UI" index="1" node_paths=PackedStringArray("button") instance=ExtResource("3_ujlqr")]
+button = NodePath("../Button")
