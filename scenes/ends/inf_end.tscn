@@ -1,0 +1,137 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmvqiujdh6sre"]
+
+[ext_resource type="Script" uid="uid://ofrlckc8vihh" path="res://scenes/ends/end.gd" id="1_8v6x1"]
+[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="2_wayba"]
+[ext_resource type="PackedScene" uid="uid://djs38s3xo5gf0" path="res://components/button_sound.tscn" id="3_r38hj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3oa8"]
+shader = ExtResource("2_wayba")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/small_star_prob = 0.99
+shader_parameter/small_star_size = 0.5
+shader_parameter/small_star_speed = 3.0
+shader_parameter/small_star_intensity = 0.8
+
+[sub_resource type="LabelSettings" id="LabelSettings_33ffd"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_80lua"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lifhh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.980392, 0.980392, 0.509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l45lp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.980392, 0.980392, 0.509804, 0.72549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtpas"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c3oa8"]
+font_size = 24
+
+[node name="INFEnd" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8v6x1")
+restart_level_name = "re_level_01"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_c3oa8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "INF"
+label_settings = SubResource("LabelSettings_33ffd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Restart & More Possible"
+label_settings = SubResource("LabelSettings_80lua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="VBoxContainer/Label2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_lifhh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l45lp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtpas")
+
+[node name="ButtonSound" parent="VBoxContainer/Label2/RestartButton" node_paths=PackedStringArray("button") instance=ExtResource("3_r38hj")]
+button = NodePath("..")
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_c3oa8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="VBoxContainer/Label3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_lifhh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l45lp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtpas")
+
+[node name="ButtonSound" parent="VBoxContainer/Label3/ExitButton" node_paths=PackedStringArray("button") instance=ExtResource("3_r38hj")]
+button = NodePath("..")
+
+[connection signal="pressed" from="VBoxContainer/Label2/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Label3/ExitButton" to="." method="_on_exit_button_pressed"]
