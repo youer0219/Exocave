@@ -33,9 +33,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w6woj"]
 shader = ExtResource("4_i2rxr")
 shader_parameter/bg_color = Color(0, 0, 0, 1)
-shader_parameter/glare_intensity = 0.0
-shader_parameter/star_prob = 1.0
-shader_parameter/star_size = 1.0
 shader_parameter/small_star_prob = 0.998
 shader_parameter/small_star_size = 0.5
 shader_parameter/small_star_speed = 3.0
