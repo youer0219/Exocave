@@ -40,6 +40,8 @@ shader_parameter/small_star_speed = 3.0
 shader_parameter/small_star_intensity = 0.8
 
 [node name="Level05" instance=ExtResource("1_cie1y")]
+level_name = "level_05"
+next_level_name = "level_06"
 
 [node name="CollisionShape2D" parent="GravityArea2D" index="0"]
 position = Vector2(82.5, 21.75)
@@ -50,6 +52,9 @@ tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAY
 
 [node name="WinArea2D" parent="Items" index="0"]
 position = Vector2(744, 401)
+
+[node name="Billboard" parent="Items" index="1"]
+text = "Level05：3 == 4"
 
 [node name="Player" parent="." index="3"]
 position = Vector2(79, 403)
