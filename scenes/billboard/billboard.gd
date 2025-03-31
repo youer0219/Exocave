@@ -28,7 +28,7 @@ func update_billboard():
 		text_update.emit("")
 
 func outline():
-	image.material.set_shader_parameter("width",0.5)
+	image.material.set_shader_parameter("width",1.0)
 
 func hide_outline():
 	image.material.set_shader_parameter("width",0.0)
