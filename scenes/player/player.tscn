@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dr0farklgsayx"]
 
 [ext_resource type="Script" uid="uid://kjk2x7wbqktm" path="res://scenes/player/player.gd" id="1_gmlin"]
-[ext_resource type="Texture2D" uid="uid://nph0kcsdaqnv" path="res://assets/kenney_pixel-platformer/Tiles/tile_0026.png" id="2_gmlin"]
+[ext_resource type="Texture2D" uid="uid://nph0kcsdaqnv" path="res://assets/sprites/Images/tile_0026.png" id="2_gmlin"]
 [ext_resource type="Script" uid="uid://bdp0gdg1s7fpu" path="res://components/rigidbody_2d_pusher.gd" id="3_p47bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh2ud"]

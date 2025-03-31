@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cm6pcukme4mw2"]
 
-[ext_resource type="Texture2D" uid="uid://cetcor14u50hs" path="res://assets/kenney_pixel-platformer/Tiles/tile_0086.png" id="1_31ivp"]
+[ext_resource type="Texture2D" uid="uid://cetcor14u50hs" path="res://assets/sprites/Images/tile_0086.png" id="1_31ivp"]
 [ext_resource type="Script" uid="uid://cv0dc1yr2xyw8" path="res://scenes/billboard/billboard.gd" id="1_vcqua"]
 [ext_resource type="Shader" uid="uid://chcruxanito2j" path="res://assets/shaders/outline.gdshader" id="2_o6ypo"]
 

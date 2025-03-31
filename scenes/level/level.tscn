@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dr0farklgsayx" path="res://scenes/player/player.tscn" id="7_b7m21"]
 [ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="8_sytrn"]
 [ext_resource type="PackedScene" uid="uid://djs38s3xo5gf0" path="res://components/button_sound.tscn" id="8_tf2q7"]
-[ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/kenney_cursor-pixel-pack/Tilemap/tilemap.png" id="8_xv074"]
+[ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/sprites/Images/tilemap.png" id="8_xv074"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xv074"]
 size = Vector2(246, 143)

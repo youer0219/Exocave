@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwad2h4qrsxb7"]
 
 [ext_resource type="Script" uid="uid://boejsdf3ba6s5" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.gd" id="1_tc25u"]
-[ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/kenney_cursor-pixel-pack/Tilemap/tilemap.png" id="2_b316b"]
+[ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/sprites/Images/tilemap.png" id="2_b316b"]
 [ext_resource type="AudioStream" uid="uid://n6b7mlb15qb6" path="res://assets/audio/sounds/impactGlass_medium_000.ogg" id="2_g4bk4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f47bs"]

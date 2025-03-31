@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dd2abswysq2tq"]
 
-[ext_resource type="Texture2D" uid="uid://4ogsi2cnni7x" path="res://assets/kenney_pixel-platformer/Tiles/tile_0146.png" id="1_d0l8e"]
+[ext_resource type="Texture2D" uid="uid://4ogsi2cnni7x" path="res://assets/sprites/Images/tile_0146.png" id="1_d0l8e"]
 [ext_resource type="Script" uid="uid://dqu3wqt8lbpww" path="res://scenes/one_way_platformer/one_way_platformer.gd" id="1_ma55o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3wov"]

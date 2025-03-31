@@ -11,9 +11,8 @@ enum Type {
 
 @onready var image: Sprite2D = $Image
 
-const TILE_COMMON = preload("res://assets/kenney_pixel-platformer/Tiles/tile_0009.png")
-const TILE_BIGOTRY = preload("res://assets/kenney_pixel-platformer/Tiles/tile_0011.png")
-#const TILE_0010 = preload("res://assets/kenney_pixel-platformer/Tiles/tile_0010.png")
+const TILE_COMMON = preload("uid://nhigfcgcg4o1")
+const TILE_BIGOTRY = preload("uid://bybfsyllk3ba3")
 
 func _ready() -> void:
 	box_type = box_type
