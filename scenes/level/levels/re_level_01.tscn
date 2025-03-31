@@ -46,7 +46,7 @@ position = Vector2(-187, -126.5)
 shape = SubResource("RectangleShape2D_qukfu")
 
 [node name="Billboard" parent="Items" index="1"]
-text = "ReLevel01
+text = "ReLevel01：新的可能
 上移：W or ↑
 下移：S or ↓
 跳跃：Space"

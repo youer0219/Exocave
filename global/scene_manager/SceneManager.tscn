@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwl8la46xvahm"]
+[gd_scene load_steps=11 format=3 uid="uid://dwl8la46xvahm"]
 
 [ext_resource type="Script" uid="uid://b3s61xl861fkt" path="res://global/scene_manager/scene_manager.gd" id="1_kheom"]
 [ext_resource type="PackedScene" uid="uid://c0fgq1mj8r5e7" path="res://scenes/level/levels/level_01.tscn" id="2_yhn74"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ddxqk7m07i0op" path="res://scenes/level/levels/level_05.tscn" id="6_t4gpf"]
 [ext_resource type="PackedScene" uid="uid://bmvqiujdh6sre" path="res://scenes/inf_end/inf_end.tscn" id="7_fg3os"]
 [ext_resource type="PackedScene" uid="uid://diku3h3dpin3r" path="res://scenes/level/levels/re_level_01.tscn" id="8_c414b"]
+[ext_resource type="PackedScene" uid="uid://pbfcus05n7us" path="res://scenes/level/levels/re_level_02.tscn" id="9_lddf4"]
+[ext_resource type="PackedScene" uid="uid://dg55an12nsp7f" path="res://scenes/level/levels/re_level_03.tscn" id="10_y76h4"]
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_kheom")
@@ -18,5 +20,7 @@ levels_dic = Dictionary[String, PackedScene]({
 "level_03": ExtResource("4_sk01j"),
 "level_04": ExtResource("5_2xub4"),
 "level_05": ExtResource("6_t4gpf"),
-"re_level_01": ExtResource("8_c414b")
+"re_level_01": ExtResource("8_c414b"),
+"re_level_02": ExtResource("9_lddf4"),
+"re_level_03": ExtResource("10_y76h4")
 })

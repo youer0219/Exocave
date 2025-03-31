@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=4 uid="uid://pbfcus05n7us"]
+
+[ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_arr1x"]
+[ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="2_h3t8p"]
+[ext_resource type="PackedScene" uid="uid://bkvo1v8o26fam" path="res://scenes/box/box.tscn" id="3_45hau"]
+[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="4_javop"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sflw"]
+size = Vector2(311, 159)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tltkb"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.980392, 0.980392, 0.509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpvcb"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.980392, 0.980392, 0.509804, 0.639216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2rxr"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w6woj"]
+shader = ExtResource("4_javop")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/small_star_prob = 0.998
+shader_parameter/small_star_size = 0.5
+shader_parameter/small_star_speed = 3.0
+shader_parameter/small_star_intensity = 0.8
+
+[node name="ReLevel02" instance=ExtResource("1_arr1x")]
+level_name = "re_level_02"
+next_level_name = "re_level_03"
+
+[node name="CollisionShape2D" parent="GravityArea2D" index="0"]
+position = Vector2(-156.5, -119.5)
+shape = SubResource("RectangleShape2D_5sflw")
+
+[node name="TileMapLayer" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAYAAAAAAAMACgACAAYAAAAAAAIACgACAAYAAAAAAAEACgACAAYAAAAAAAAACgACAAYAAAABAAAACgACAAEAAQACAAAACgACAAEAAQADAAAACgACAAEAAQAEAAAACgACAAEAAQAFAAAACgACAAEAAQAGAAAACgACAAEAAQAHAAAACgACAAEAAQAIAAAACgACAAEAAQAJAAAACgACAAEAAQAKAAAACgACAAEAAQALAAAACgACAAEAAQAMAAAACgACAAEAAQAKAAIACgACAAEAAAALAAIACgACAAEAAAAIAAIACgACAAEAAAAJAAIACgACAAEAAAALAAQACgACAAEAAAAMAAQACgACAAEAAAAMAAIACgACAAEAAAAAAAcACgACAAYAAAANAAAACgACAAEAAQAOAAAACgACAAEAAQAOAAYACgACAAYAAAALAAcACgACAAEAAAAMAAcACgACAAEAAAANAAcACgACAAEAAAAOAAcACgACAAYAAAAOAAIACgACAAEAAAAKAAcACgACAAEAAAAJAAcACgACAAEAAAAIAAcACgACAAEAAAABAAcACgACAAEAAAACAAcACgACAAEAAAADAAcACgACAAEAAAAEAAcACgACAAEAAAAFAAcACgACAAEAAAAGAAcACgACAAEAAAAOAAUACgACAAYAAAAOAAQACgACAAYAAAAOAAMACgACAAYAAAAHAAcACgACAAEAAAANAAIACgACAAEAAAANAAQACgACAAEAAAAPAAAACgACAAYAAAAPAAEACgACAAYAAAAPAAIACgACAAYAAAAPAAMACgACAAYAAAAPAAQACgACAAYAAAAPAAUACgACAAYAAAAPAAYACgACAAYAAAAPAAcACgACAAYAAAA=")
+
+[node name="WinArea2D" parent="Items" index="0"]
+position = Vector2(240, 28)
+
+[node name="Billboard" parent="Items" index="1"]
+position = Vector2(120, 118)
+text = "ReLevel02：一气呵成"
+
+[node name="GravityFlipArea2D" parent="Items/GravityFlipArea2Ds" index="0" instance=ExtResource("2_h3t8p")]
+position = Vector2(28, 118)
+gravity_state = 3
+
+[node name="Box" parent="Items/Boxs" index="0" instance=ExtResource("3_45hau")]
+position = Vector2(102, 34)
+mass = 5.0
+gravity_scale = 0.1
+box_type = 1
+
+[node name="Player" parent="." index="3"]
+position = Vector2(57, 115)
+
+[node name="Camera2D" parent="." index="4"]
+position = Vector2(129, 72)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Button" parent="UI" index="0"]
+theme_override_styles/hover = SubResource("StyleBoxFlat_tltkb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fpvcb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i2rxr")
+
+[node name="ColorRect" parent="Background" index="0"]
+material = SubResource("ShaderMaterial_w6woj")
