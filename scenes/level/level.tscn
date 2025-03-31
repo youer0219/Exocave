@@ -87,6 +87,8 @@ position = Vector2(117, 83)
 
 [node name="OneWayPlatformers" type="Node2D" parent="Items"]
 
+[node name="Others" type="Node2D" parent="Items"]
+
 [node name="Player" parent="." instance=ExtResource("7_b7m21")]
 position = Vector2(115, 46)
 
