@@ -13,20 +13,20 @@ func _physics_process(delta: float) -> void:
 
 
 	if up_direction.x == 0:
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_speed * up_direction.y
 
-		var direction := Input.get_axis("ui_left", "ui_right")
+		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
 			velocity.x = direction * speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
 
 	elif up_direction.y == 0:
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.x = jump_speed * up_direction.x
 
-		var direction := Input.get_axis("ui_up", "ui_down")
+		var direction := Input.get_axis("move_up", "move_down")
 		if direction:
 			velocity.y = direction * speed
 		else:
