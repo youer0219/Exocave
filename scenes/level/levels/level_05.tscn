@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://ddxqk7m07i0op"]
+[gd_scene load_steps=8 format=4 uid="uid://ddxqk7m07i0op"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_cie1y"]
+[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="2_mwh2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cie1y"]
 size = Vector2(781, 444.5)
@@ -27,6 +28,17 @@ border_color = Color(0.980392, 0.980392, 0.509804, 0.639216)
 resource_local_to_scene = true
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4wnf"]
+shader = ExtResource("2_mwh2j")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/glare_intensity = 0.0
+shader_parameter/star_prob = 1.0
+shader_parameter/star_size = 1.0
+shader_parameter/small_star_prob = 0.995
+shader_parameter/small_star_size = 0.5
+shader_parameter/small_star_speed = 3.0
+shader_parameter/small_star_intensity = 0.8
+
 [node name="Level05" instance=ExtResource("1_cie1y")]
 
 [node name="CollisionShape2D" parent="GravityArea2D" index="0"]
@@ -50,3 +62,6 @@ zoom = Vector2(0.5, 0.5)
 theme_override_styles/hover = SubResource("StyleBoxFlat_mwh2j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_q4wnf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_o1wpm")
+
+[node name="ColorRect" parent="Background" index="0"]
+material = SubResource("ShaderMaterial_q4wnf")

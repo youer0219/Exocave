@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://dxu5dmsl7hp3"]
+[gd_scene load_steps=10 format=4 uid="uid://dxu5dmsl7hp3"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_5sflw"]
 [ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="2_fpvcb"]
 [ext_resource type="PackedScene" uid="uid://bkvo1v8o26fam" path="res://scenes/box/box.tscn" id="2_tltkb"]
+[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="4_i2rxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sflw"]
 size = Vector2(311, 159)
@@ -29,6 +30,17 @@ border_color = Color(0.980392, 0.980392, 0.509804, 0.639216)
 resource_local_to_scene = true
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w6woj"]
+shader = ExtResource("4_i2rxr")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/glare_intensity = 0.0
+shader_parameter/star_prob = 1.0
+shader_parameter/star_size = 1.0
+shader_parameter/small_star_prob = 0.998
+shader_parameter/small_star_size = 0.5
+shader_parameter/small_star_speed = 3.0
+shader_parameter/small_star_intensity = 0.8
+
 [node name="Level02" instance=ExtResource("1_5sflw")]
 level_name = "level_02"
 next_level_name = "level_03"
@@ -42,6 +54,10 @@ tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAY
 
 [node name="WinArea2D" parent="Items" index="0"]
 position = Vector2(240, 28)
+
+[node name="Billboard" parent="Items" index="1"]
+position = Vector2(120, 118)
+text = "Level02：换位思考"
 
 [node name="GravityFlipArea2D" parent="Items/GravityFlipArea2Ds" index="0" instance=ExtResource("2_fpvcb")]
 position = Vector2(28, 118)
@@ -60,3 +76,6 @@ zoom = Vector2(1.5, 1.5)
 theme_override_styles/hover = SubResource("StyleBoxFlat_tltkb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_fpvcb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_i2rxr")
+
+[node name="ColorRect" parent="Background" index="0"]
+material = SubResource("ShaderMaterial_w6woj")

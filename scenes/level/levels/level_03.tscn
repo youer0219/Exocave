@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://da0jn4lfseg10"]
+[gd_scene load_steps=10 format=4 uid="uid://da0jn4lfseg10"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_b2jqh"]
 [ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="2_8p5re"]
 [ext_resource type="PackedScene" uid="uid://bkvo1v8o26fam" path="res://scenes/box/box.tscn" id="3_v1p6c"]
+[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="4_1vo70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2jqh"]
 size = Vector2(409, 249.5)
@@ -29,6 +30,17 @@ border_color = Color(0.980392, 0.980392, 0.509804, 0.639216)
 resource_local_to_scene = true
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vq1c"]
+shader = ExtResource("4_1vo70")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/glare_intensity = 0.0
+shader_parameter/star_prob = 1.0
+shader_parameter/star_size = 1.0
+shader_parameter/small_star_prob = 0.997
+shader_parameter/small_star_size = 0.5
+shader_parameter/small_star_speed = 3.0
+shader_parameter/small_star_intensity = 0.8
+
 [node name="Level03" instance=ExtResource("1_b2jqh")]
 level_name = "level_03"
 next_level_name = "level_04"
@@ -42,6 +54,10 @@ tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAY
 
 [node name="WinArea2D" parent="Items" index="0"]
 position = Vector2(361, 207)
+
+[node name="Billboard" parent="Items" index="1"]
+position = Vector2(248, 101)
+text = "Level03：偏见"
 
 [node name="GravityFlipArea2D2" parent="Items/GravityFlipArea2Ds" index="0" instance=ExtResource("2_8p5re")]
 position = Vector2(50, 27)
@@ -60,7 +76,7 @@ box_type = 1
 position = Vector2(335, 29)
 
 [node name="Player" parent="." index="3"]
-position = Vector2(239, 97)
+position = Vector2(278, 99)
 speed = 150.0
 
 [node name="Camera2D" parent="." index="4"]
@@ -71,3 +87,6 @@ zoom = Vector2(1, 1)
 theme_override_styles/hover = SubResource("StyleBoxFlat_8p5re")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_v1p6c")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1vo70")
+
+[node name="ColorRect" parent="Background" index="0"]
+material = SubResource("ShaderMaterial_3vq1c")

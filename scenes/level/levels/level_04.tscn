@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://mbu2d847ny6v"]
+[gd_scene load_steps=11 format=4 uid="uid://mbu2d847ny6v"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_l23p1"]
 [ext_resource type="PackedScene" uid="uid://bkvo1v8o26fam" path="res://scenes/box/box.tscn" id="2_j3lvj"]
 [ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="2_wbvef"]
 [ext_resource type="PackedScene" uid="uid://dd2abswysq2tq" path="res://scenes/one_way_platformer/one_way_platformer.tscn" id="3_wbvef"]
+[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="5_lf6u4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l23p1"]
 size = Vector2(539, 319.5)
@@ -30,6 +31,17 @@ border_color = Color(0.980392, 0.980392, 0.509804, 0.639216)
 resource_local_to_scene = true
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onrde"]
+shader = ExtResource("5_lf6u4")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/glare_intensity = 0.0
+shader_parameter/star_prob = 1.0
+shader_parameter/star_size = 1.0
+shader_parameter/small_star_prob = 0.996
+shader_parameter/small_star_size = 0.5
+shader_parameter/small_star_speed = 3.0
+shader_parameter/small_star_intensity = 0.8
+
 [node name="Level04" instance=ExtResource("1_l23p1")]
 level_name = "level_04"
 next_level_name = "level_05"
@@ -43,6 +55,10 @@ tile_map_data = PackedByteArray("AAAAAAYACgACAAYAAAAAAAUACgACAAYAAAAAAAQACgACAAY
 
 [node name="WinArea2D" parent="Items" index="0"]
 position = Vector2(497, 262)
+
+[node name="Billboard" parent="Items" index="1"]
+position = Vector2(29, 99)
+text = "Level04:通道"
 
 [node name="GravityFlipArea2D" parent="Items/GravityFlipArea2Ds" index="0" instance=ExtResource("2_wbvef")]
 position = Vector2(426, 29)
@@ -104,3 +120,10 @@ zoom = Vector2(0.75, 0.75)
 theme_override_styles/hover = SubResource("StyleBoxFlat_j3lvj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x3wov")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wbvef")
+
+[node name="Label" parent="UI" index="1"]
+offset_top = -26.0
+offset_bottom = 2.0
+
+[node name="ColorRect" parent="Background" index="0"]
+material = SubResource("ShaderMaterial_onrde")

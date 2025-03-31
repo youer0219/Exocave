@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0fgq1mj8r5e7"]
+[gd_scene load_steps=10 format=3 uid="uid://c0fgq1mj8r5e7"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_qukfu"]
 [ext_resource type="PackedScene" uid="uid://bwad2h4qrsxb7" path="res://scenes/gravity_flip_area_2d/gravity_flip_area_2d.tscn" id="2_7ugam"]
 [ext_resource type="PackedScene" uid="uid://djs38s3xo5gf0" path="res://components/button_sound.tscn" id="3_ujlqr"]
+[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="4_ddn6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qukfu"]
 size = Vector2(246, 143)
@@ -29,6 +30,17 @@ border_color = Color(0.980392, 0.980392, 0.509804, 0.639216)
 resource_local_to_scene = true
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vl1ph"]
+shader = ExtResource("4_ddn6a")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/glare_intensity = 0.0
+shader_parameter/star_prob = 1.0
+shader_parameter/star_size = 1.0
+shader_parameter/small_star_prob = 0.999
+shader_parameter/small_star_size = 0.5
+shader_parameter/small_star_speed = 3.0
+shader_parameter/small_star_intensity = 0.8
+
 [node name="Level01" instance=ExtResource("1_qukfu")]
 level_name = "level_01"
 next_level_name = "level_02"
@@ -37,8 +49,17 @@ next_level_name = "level_02"
 position = Vector2(-187, -126.5)
 shape = SubResource("RectangleShape2D_qukfu")
 
+[node name="Billboard" parent="Items" index="1"]
+text = "Level01：翻转
+左移：A or ←
+右移：D or →
+跳跃：Space"
+
 [node name="GravityFlipArea2D" parent="Items/GravityFlipArea2Ds" index="0" instance=ExtResource("2_7ugam")]
 position = Vector2(28, 82)
+
+[node name="Player" parent="." index="3"]
+position = Vector2(114, 45)
 
 [node name="Button" parent="UI" index="0"]
 theme_override_styles/hover = SubResource("StyleBoxFlat_qukfu")
@@ -47,3 +68,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ujlqr")
 
 [node name="ButtonSound" parent="UI" index="1" node_paths=PackedStringArray("button") instance=ExtResource("3_ujlqr")]
 button = NodePath("../Button")
+
+[node name="ColorRect" parent="Background" index="0"]
+material = SubResource("ShaderMaterial_vl1ph")
