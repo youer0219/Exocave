@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://xyko1kapr26x"]
+
+[node name="PlayerDeadArea" type="Area2D"]

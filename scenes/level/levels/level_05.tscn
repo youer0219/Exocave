@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://ddxqk7m07i0op"]
+[gd_scene load_steps=16 format=4 uid="uid://ddxqk7m07i0op"]
 
 [ext_resource type="PackedScene" uid="uid://bhgetgieutmei" path="res://scenes/level/level.tscn" id="1_cie1y"]
 [ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="2_mwh2j"]
@@ -6,12 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://bkvo1v8o26fam" path="res://scenes/box/box.tscn" id="2_q4wnf"]
 [ext_resource type="PackedScene" uid="uid://dd2abswysq2tq" path="res://scenes/one_way_platformer/one_way_platformer.tscn" id="4_vkx0r"]
 [ext_resource type="PackedScene" uid="uid://cnoympmdtur3l" path="res://scenes/player_speed_limit/player_speed_limit.tscn" id="4_x6upp"]
+[ext_resource type="PackedScene" uid="uid://xyko1kapr26x" path="res://scenes/player_dead_area/player_dead_area.tscn" id="6_85t27"]
+[ext_resource type="Script" uid="uid://b5wcx5ls48cfi" path="res://scenes/player_dead_area/player_dead_area.gd" id="7_1n2qc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cie1y"]
 size = Vector2(781, 576)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6upp"]
 size = Vector2(311, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85t27"]
+size = Vector2(123.5, 20)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwh2j"]
 resource_local_to_scene = true
@@ -45,7 +50,7 @@ shader_parameter/small_star_intensity = 0.8
 
 [node name="Level05" instance=ExtResource("1_cie1y")]
 level_name = "level_05"
-next_level_name = "level_06"
+next_level_name = "inf_end"
 
 [node name="CollisionShape2D" parent="GravityArea2D" index="0"]
 position = Vector2(82.5, -44)
@@ -126,8 +131,17 @@ position = Vector2(615, -145)
 position = Vector2(0.5, -9)
 shape = SubResource("RectangleShape2D_x6upp")
 
+[node name="PlayerDeadArea" parent="Items/Others" index="1" node_paths=PackedStringArray("level") instance=ExtResource("6_85t27")]
+position = Vector2(586, 448)
+script = ExtResource("7_1n2qc")
+level = NodePath("../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Others/PlayerDeadArea" index="0"]
+position = Vector2(12, -4)
+shape = SubResource("RectangleShape2D_85t27")
+
 [node name="Player" parent="." index="3"]
-position = Vector2(88, 331)
+position = Vector2(88, 332)
 
 [node name="Camera2D" parent="." index="4"]
 position = Vector2(384, 217)
@@ -140,3 +154,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_o1wpm")
 
 [node name="ColorRect" parent="Background" index="0"]
 material = SubResource("ShaderMaterial_q4wnf")
+
+[connection signal="body_entered" from="Items/Others/PlayerDeadArea" to="Items/Others/PlayerDeadArea" method="_on_body_entered"]
