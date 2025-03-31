@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkwo6530pkeja" path="res://scenes/main_menu/main_menu.gd" id="1_axelx"]
 [ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="1_isws5"]
-[ext_resource type="AudioStream" uid="uid://bhyb86hhdcg75" path="res://assets/audio/music/标题音乐.wav" id="2_qmweu"]
+[ext_resource type="AudioStream" uid="uid://bhyb86hhdcg75" path="res://assets/audio/music/标题音乐.wav" id="2_f1mbi"]
 [ext_resource type="AudioStream" uid="uid://dnqb2lwuxedrh" path="res://assets/audio/music/Circulation(loop).wav" id="3_f1mbi"]
 [ext_resource type="PackedScene" uid="uid://djs38s3xo5gf0" path="res://components/button_sound.tscn" id="6_oitky"]
 
@@ -48,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_axelx")
 first_level_name = "level_01"
-title_music = ExtResource("2_qmweu")
+title_music = ExtResource("2_f1mbi")
 level_music = ExtResource("3_f1mbi")
 
 [node name="ColorRect" type="ColorRect" parent="."]
