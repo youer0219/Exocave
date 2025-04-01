@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://dnubsepx1s70s"]
 
-[ext_resource type="Script" uid="uid://bkwo6530pkeja" path="res://scenes/main_menu/main_menu.gd" id="1_axelx"]
-[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="1_isws5"]
-[ext_resource type="AudioStream" uid="uid://bhyb86hhdcg75" path="res://assets/audio/music/标题音乐.wav" id="2_f1mbi"]
-[ext_resource type="AudioStream" uid="uid://dnqb2lwuxedrh" path="res://assets/audio/music/Circulation(loop).wav" id="3_f1mbi"]
-[ext_resource type="PackedScene" uid="uid://djs38s3xo5gf0" path="res://components/button_sound.tscn" id="6_oitky"]
+[ext_resource type="Script" uid="uid://bkwo6530pkeja" path="res://scenes/main_menu/main_menu.gd" id="1_wem23"]
+[ext_resource type="AudioStream" uid="uid://bhyb86hhdcg75" path="res://assets/audio/music/标题音乐.wav" id="2_3ovsr"]
+[ext_resource type="AudioStream" uid="uid://dnqb2lwuxedrh" path="res://assets/audio/music/Circulation(loop).wav" id="3_5seab"]
+[ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="4_4xg86"]
+[ext_resource type="Script" uid="uid://cl1hjwwd1dnat" path="res://components/button_sound.gd" id="5_wem23"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axelx"]
-shader = ExtResource("1_isws5")
+shader = ExtResource("4_4xg86")
 shader_parameter/bg_color = Color(0, 0, 0, 1)
 shader_parameter/small_star_prob = 0.996
 shader_parameter/small_star_size = 0.5
@@ -46,10 +46,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_axelx")
+script = ExtResource("1_wem23")
 first_level_name = "level_01"
-title_music = ExtResource("2_f1mbi")
-level_music = ExtResource("3_f1mbi")
+title_music = ExtResource("2_3ovsr")
+level_music = ExtResource("3_5seab")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_axelx")
@@ -105,7 +105,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cdyji")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_isws5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_axelx")
 
-[node name="ButtonSound" parent="VBoxContainer/Label/Button" node_paths=PackedStringArray("button") instance=ExtResource("6_oitky")]
+[node name="ButtonSound" type="Node" parent="VBoxContainer/Label/Button" node_paths=PackedStringArray("button")]
+script = ExtResource("5_wem23")
 button = NodePath("..")
 
 [connection signal="pressed" from="VBoxContainer/Label/Button" to="." method="_on_button_pressed"]

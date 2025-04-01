@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ofrlckc8vihh" path="res://scenes/ends/end.gd" id="1_8v6x1"]
 [ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="2_wayba"]
-[ext_resource type="PackedScene" uid="uid://djs38s3xo5gf0" path="res://components/button_sound.tscn" id="3_r38hj"]
+[ext_resource type="Script" uid="uid://cl1hjwwd1dnat" path="res://components/button_sound.gd" id="4_sr40x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c3oa8"]
 shader = ExtResource("2_wayba")
@@ -104,7 +104,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_lifhh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l45lp")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vtpas")
 
-[node name="ButtonSound" parent="VBoxContainer/Label2/RestartButton" node_paths=PackedStringArray("button") instance=ExtResource("3_r38hj")]
+[node name="ButtonSound" type="Node" parent="VBoxContainer/Label2/RestartButton" node_paths=PackedStringArray("button")]
+script = ExtResource("4_sr40x")
 button = NodePath("..")
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
@@ -130,7 +131,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_lifhh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l45lp")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vtpas")
 
-[node name="ButtonSound" parent="VBoxContainer/Label3/ExitButton" node_paths=PackedStringArray("button") instance=ExtResource("3_r38hj")]
+[node name="ButtonSound" type="Node" parent="VBoxContainer/Label3/ExitButton" node_paths=PackedStringArray("button")]
+script = ExtResource("4_sr40x")
 button = NodePath("..")
 
 [connection signal="pressed" from="VBoxContainer/Label2/RestartButton" to="." method="_on_restart_button_pressed"]

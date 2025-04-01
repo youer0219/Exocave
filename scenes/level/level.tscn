@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bwo22nee7dils" path="res://scenes/win_area_2d/win_area_2d.tscn" id="5_pe1ox"]
 [ext_resource type="PackedScene" uid="uid://cm6pcukme4mw2" path="res://scenes/billboard/billboard.tscn" id="5_wcngd"]
 [ext_resource type="PackedScene" uid="uid://dr0farklgsayx" path="res://scenes/player/player.tscn" id="7_b7m21"]
+[ext_resource type="Script" uid="uid://cl1hjwwd1dnat" path="res://components/button_sound.gd" id="7_xv074"]
 [ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="8_sytrn"]
-[ext_resource type="PackedScene" uid="uid://djs38s3xo5gf0" path="res://components/button_sound.tscn" id="8_tf2q7"]
 [ext_resource type="Texture2D" uid="uid://domvpvowqypxy" path="res://assets/sprites/Images/tilemap.png" id="8_xv074"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xv074"]
@@ -108,7 +108,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xv074")
 icon = SubResource("AtlasTexture_sytrn")
 icon_alignment = 1
 
-[node name="ButtonSound" parent="UI/Button" node_paths=PackedStringArray("button") instance=ExtResource("8_tf2q7")]
+[node name="ButtonSound" type="Node" parent="UI/Button" node_paths=PackedStringArray("button")]
+script = ExtResource("7_xv074")
 button = NodePath("..")
 
 [node name="Label" type="Label" parent="UI"]

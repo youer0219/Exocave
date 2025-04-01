@@ -19,7 +19,6 @@ func _ready() -> void:
 
 func _set_box_type(value:Type):
 	box_type = value
-	## TODO:需要一点视觉区别
 	
 	if not is_node_ready():
 		await ready
