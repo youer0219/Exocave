@@ -1,7 +1,5 @@
 extends Node
 
-
-
 @export var levels_dic:Dictionary[String,PackedScene]
 
 func change_scene_to_level(level_name:String):

@@ -24,7 +24,6 @@ const RIGHT_IMAGE_REGION_X := 221
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		gravity_flip.emit(get_gravity_state_direction())
-		#EventBus.gravity_flip.emit(get_gravity_state_direction())
 		SfxPlayer.play(gravity_change_sound,false,0.0)
 
 func _set_gravity_state(value:GravityState):

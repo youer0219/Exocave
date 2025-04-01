@@ -18,7 +18,7 @@ func play(audio: AudioStream,single = false,fade_in_time:float = 1.0 ):
 			player.volume_db = -80                   # 起始音量设为静音
 			# 创建音量渐变效果
 			var tween = create_tween()
-			tween.tween_property(player, "volume_db", original_volume, fade_in_time)  # 1秒淡入时长
+			tween.tween_property(player, "volume_db", original_volume, fade_in_time)
 			# ------------------------ 淡入处理结束
 			
 			player.play()
