@@ -4,6 +4,9 @@ class_name Level
 @export var level_name:String
 @export var next_level_name:String
 
+@export_file var level_path:String
+@export_file var next_level_path:String
+
 @onready var win_area_2d: Area2D = %WinArea2D
 @onready var billboard: Billboard = %Billboard
 @onready var label: Label = %Label
@@ -13,7 +16,8 @@ class_name Level
 func _ready() -> void:
 	win_area_2d.level_win.connect(
 		func():
-			MySceneManager.change_scene_to_level(next_level_name)
+			#MySceneManager.change_scene_to_level(next_level_name)
+			CoreSystem.scene_manager.change_scene_async(next_level_path)
 	)
 	billboard.text_update.connect(
 		func(text:String):
@@ -28,4 +32,5 @@ func _ready() -> void:
 		)
 
 func _on_button_pressed() -> void:
-	MySceneManager.change_scene_to_level(level_name)
+	#MySceneManager.change_scene_to_level(level_name)
+	CoreSystem.scene_manager.change_scene_async(level_path)

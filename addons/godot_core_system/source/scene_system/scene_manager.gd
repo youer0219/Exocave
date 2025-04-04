@@ -233,6 +233,7 @@ func _do_scene_switch(
 	else:
 		# 如果不需要保存状态，则直接销毁当前场景
 		if _current_scene:
+			#_current_scene.get_parent().call_deferred("remove_child",_current_scene)
 			_current_scene.get_parent().remove_child(_current_scene)
 			_current_scene.queue_free()
 
