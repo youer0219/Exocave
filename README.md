@@ -1,4 +1,4 @@
-# ExoCave
+# Exocave
 
 离开洞穴
 
