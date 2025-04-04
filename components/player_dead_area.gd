@@ -5,4 +5,4 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		SceneManager.change_scene_to_level(level.level_name)
+		MySceneManager.change_scene_to_level(level.level_name)

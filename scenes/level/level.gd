@@ -13,7 +13,7 @@ class_name Level
 func _ready() -> void:
 	win_area_2d.level_win.connect(
 		func():
-			SceneManager.change_scene_to_level(next_level_name)
+			MySceneManager.change_scene_to_level(next_level_name)
 	)
 	billboard.text_update.connect(
 		func(text:String):
@@ -28,4 +28,4 @@ func _ready() -> void:
 		)
 
 func _on_button_pressed() -> void:
-	SceneManager.change_scene_to_level(level_name)
+	MySceneManager.change_scene_to_level(level_name)
