@@ -19,6 +19,7 @@ func _ready() -> void:
 			#MySceneManager.change_scene_to_level(next_level_name)
 			CoreSystem.scene_manager.change_scene_async(next_level_path)
 	)
+	
 	billboard.text_update.connect(
 		func(text:String):
 			label.text = text

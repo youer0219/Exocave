@@ -53,6 +53,8 @@ shader_parameter/small_star_intensity = 0.8
 [node name="Level05" instance=ExtResource("1_cie1y")]
 level_name = "level_05"
 next_level_name = "inf_end"
+level_path = "uid://ddxqk7m07i0op"
+next_level_path = "uid://bmvqiujdh6sre"
 
 [node name="CollisionShape2D" parent="GravityArea2D" index="0"]
 position = Vector2(82.5, -44)
