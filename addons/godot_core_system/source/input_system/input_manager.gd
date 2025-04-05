@@ -1,120 +1,90 @@
 extends Node
 
+## 动作触发信号
 signal action_triggered(action_name: String, event: InputEvent)
+## 轴值变化信号
 signal axis_changed(axis_name: String, value: Vector2)
+## 重映射完成信号
+signal remap_completed(action: String, event: InputEvent)
 
-var _virtual_actions: Dictionary = {}
-var _axis_mappings: Dictionary = {}
-var _action_states: Dictionary = {}
+## 虚拟轴系统
+@onready var virtual_axis: InputVirtualAxis = InputVirtualAxis.new()
+## 输入缓冲系统
+@onready var input_buffer: InputBuffer = InputBuffer.new()
+## 输入记录器
+@onready var input_recorder: InputRecorder = InputRecorder.new()
+## 输入状态管理器
+@onready var input_state: InputState = InputState.new()
+## 事件处理器
+@onready var event_processor: InputEventProcessor = InputEventProcessor.new()
+## 配置管理器
+@onready var config_manager: Node = CoreSystem.config_manager
 
-func _ready():
-	# 初始化所有已注册的输入动作状态
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	_setup_input_handling()
+	virtual_axis.axis_changed.connect(_on_axis_changed)
+
+func _process(delta: float) -> void:
+	_update_input_state(delta)
+
+func _input(event: InputEvent) -> void:
+	if not event_processor.process_event(event):
+		return
+	_process_action_input(event)
+
+#region 私有方法 - 初始化
+func _setup_input_handling() -> void:
+	set_process_input(true)
+#endregion
+
+#region 私有方法 - 输入处理
+## 更新输入状态
+## [param delta] 时间增量
+func _update_input_state(delta: float) -> void:
+	input_buffer.clean_expired_buffers()
+	
+	# 更新轴状态
+	for axis_name in virtual_axis.get_registered_axes():
+		virtual_axis.update_axis(axis_name)
+	
+	# 更新所有动作的状态
 	for action in InputMap.get_actions():
-		_action_states[action] = false
+		var is_pressed = Input.is_action_pressed(action)
+		var strength = Input.get_action_strength(action)
+		input_state.update_action(action, is_pressed, strength)
 
-## 输入事件处理
+## 处理动作输入
 ## [param event] 输入事件
-func _input(event: InputEvent):
-	# 处理所有已注册的输入动作
+func _process_action_input(event: InputEvent) -> void:
+	if not event.is_action_type():
+		return
+		
 	for action in InputMap.get_actions():
 		if event.is_action(action):
 			var just_pressed = event.is_action_pressed(action)
 			var just_released = event.is_action_released(action)
+			var strength = event.get_action_strength(action)
 			
 			if just_pressed or just_released:
-				_action_states[action] = just_pressed
+				# 更新输入状态
+				input_state.update_action(action, just_pressed, strength)
+				
+				# 处理输入缓冲
+				if just_pressed:
+					input_buffer.add_buffer(action, strength)
+				
+				# 记录输入
+				input_recorder.record_input(action, just_pressed, strength)
+				
+				# 发送信号
 				action_triggered.emit(action, event)
+#endregion
 
-	# 处理虚拟轴输入
-	_process_axis_input()
-
-## 注册虚拟轴
+#region 私有方法 - 回调函数
+## 轴值变化回调
 ## [param axis_name] 轴名称
-## [param positive_x] 正向 X 轴动作
-## [param negative_x] 负向 X 轴动作
-## [param positive_y] 正向 Y 轴动作
-## [param negative_y] 负向 Y 轴动作
-func register_axis(axis_name: String, positive_x: String = "", negative_x: String = "", 
-				  positive_y: String = "", negative_y: String = "") -> void:
-	_axis_mappings[axis_name] = {
-		"positive_x": positive_x,
-		"negative_x": negative_x,
-		"positive_y": positive_y,
-		"negative_y": negative_y
-	}
-
-## 注册虚拟动作
-## [param action_name] 动作名称
-## [param key_combination] 按键组合
-func register_virtual_action(action_name: String, key_combination: Array) -> void:
-	if not InputMap.has_action(action_name):
-		InputMap.add_action(action_name)
-	
-	for event in key_combination:
-		InputMap.action_add_event(action_name, event)
-	_virtual_actions[action_name] = key_combination
-	_action_states[action_name] = false
-
-## 检查动作是否被按下
-## [param action_name] 动作名称
-## [return] 是否按下
-func is_action_pressed(action_name: String) -> bool:
-	return _action_states.get(action_name, false)
-
-## 检查动作是否刚刚被按下
-## [param action_name] 动作名称
-## [return] 是否刚刚按下
-func is_action_just_pressed(action_name: String) -> bool:
-	return Input.is_action_just_pressed(action_name)
-
-## 检查动作是否刚刚被释放
-## [param action_name] 动作名称
-## [return] 是否刚刚释放
-func is_action_just_released(action_name: String) -> bool:
-	return Input.is_action_just_released(action_name)
-
-## 获取轴的值
-## [param axis_name] 轴名称
-## [return] 值 value
-func get_axis_value(axis_name: String) -> Vector2:
-	if not _axis_mappings.has(axis_name):
-		return Vector2.ZERO
-	
-	var mapping = _axis_mappings[axis_name]
-	var result = Vector2.ZERO
-	
-	if mapping.has("positive_x") and Input.is_action_pressed(mapping.positive_x):
-		result.x += 1
-	if mapping.has("negative_x") and Input.is_action_pressed(mapping.negative_x):
-		result.x -= 1
-	if mapping.has("positive_y") and Input.is_action_pressed(mapping.positive_y):
-		result.y += 1
-	if mapping.has("negative_y") and Input.is_action_pressed(mapping.negative_y):
-		result.y -= 1
-	
-	return result
-
-## 清除所有虚拟输入
-func clear_virtual_inputs() -> void:
-	for action in _virtual_actions.keys():
-		InputMap.erase_action(action)
-	_virtual_actions.clear()
-	_axis_mappings.clear()
-	_action_states.clear()
-
-## 处理虚拟轴输入
-func _process_axis_input():
-	for axis_name in _axis_mappings:
-		var mapping = _axis_mappings[axis_name]
-		var axis_value = Vector2.ZERO
-		
-		if mapping.has("positive_x") and Input.is_action_pressed(mapping.positive_x):
-			axis_value.x += 1
-		if mapping.has("negative_x") and Input.is_action_pressed(mapping.negative_x):
-			axis_value.x -= 1
-		if mapping.has("positive_y") and Input.is_action_pressed(mapping.positive_y):
-			axis_value.y += 1
-		if mapping.has("negative_y") and Input.is_action_pressed(mapping.negative_y):
-			axis_value.y -= 1
-		
-		axis_changed.emit(axis_name, axis_value)
+## [param value] 轴值
+func _on_axis_changed(axis_name: String, value: Vector2) -> void:
+	axis_changed.emit(axis_name, value)
+#endregion
