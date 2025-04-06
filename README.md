@@ -15,9 +15,15 @@
 
 网页端游玩与Windows打包下载：[itch链接](https://youer0219.itch.io/exocave)
 
+[其他参赛作品游玩](https://itch.io/jam/httpsgithubcomli-game-academy-craft-2/entries)
+
 ## 引擎版本
 
 Godot4.4.1稳定版
+
+## 开发日志
+
+[原始版](开发日志.md) 或 [web版加后日谈](https://youer0219.itch.io/exocave/devlog/916039/post)
 
 ## 资产
 
