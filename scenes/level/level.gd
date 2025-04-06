@@ -31,10 +31,7 @@ func _ready() -> void:
 			func(new_gravity_direction:Vector2):
 				gravity_area_2d.gravity_direction = new_gravity_direction
 		)
-	print("$Camera2D.is_current(): 01 ",$Camera2D.is_current())
-	await get_tree().create_timer(1.0).timeout
-	print("$Camera2D.is_current(): 02 ",$Camera2D.is_current())
-	
+
 
 func _on_button_pressed() -> void:
 	#MySceneManager.change_scene_to_level(level_name)

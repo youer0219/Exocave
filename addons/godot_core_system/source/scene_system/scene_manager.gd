@@ -247,6 +247,7 @@ func _setup_transition_layer() -> void:
 	_transition_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE  # 忽略鼠标输入
 	_transition_layer.add_child(_transition_rect)
 	
+	
 	var root : Window = get_tree().root
 	if not root.size_changed.is_connected(_on_viewport_size_changed):
 		root.size_changed.connect(_on_viewport_size_changed)
@@ -308,12 +309,14 @@ func _do_scene_switch(
 	if effect != TransitionEffect.NONE:
 		await _end_transition(effect, duration, custom_transition_name)
 		_cleanup_transition(effect, custom_transition_name)
-		
+	
+	call_deferred("_update_new_scene_camera",new_scene)
+	
 	scene_changed.emit(old_scene, new_scene)
-
+	
 	# 回调
 	if callback.is_valid():
-		callback.call()        
+		callback.call()
 	
 	scene_loading_finished.emit()
 
@@ -322,3 +325,14 @@ func _on_resource_loaded(path: String, resource: Resource) -> void:
 	if path in _preloaded_scenes and resource is PackedScene:
 		_preloaded_scenes.erase(path)
 		scene_preloaded.emit(path)
+
+func _update_new_scene_camera(new_scene:Node):
+	var new_scene_viewport = new_scene.get_viewport()
+	if new_scene_viewport != null:
+		if new_scene_viewport.get_camera_2d() != null:
+			new_scene_viewport.get_camera_2d().force_update_scroll()
+			new_scene_viewport.get_camera_2d().force_update_transform()
+	## 3D 无法确定是否有效
+	#if new_scene_viewport != null:
+		#if new_scene_viewport.get_camera_3d() != null:
+			#new_scene_viewport.get_camera_3d().force_update_transform()
