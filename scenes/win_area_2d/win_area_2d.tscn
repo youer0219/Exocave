@@ -1,14 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwo22nee7dils"]
+[gd_scene load_steps=4 format=3 uid="uid://bwo22nee7dils"]
 
 [ext_resource type="Script" uid="uid://bbl6kv14s6ofg" path="res://scenes/win_area_2d/win_area_2d.gd" id="1_nfahv"]
 [ext_resource type="Texture2D" uid="uid://ccr1nf5nxr2o4" path="res://assets/sprites/Images/tile_0088.png" id="1_o8jyh"]
-[ext_resource type="AudioStream" uid="uid://scqby1l3s4ym" path="res://assets/audio/sounds/impactGlass_light_003.ogg" id="2_q2d0r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqvew"]
 
 [node name="WinArea2D" type="Area2D"]
 script = ExtResource("1_nfahv")
-win_sound = ExtResource("2_q2d0r")
+win_sound_path = "uid://scqby1l3s4ym"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hqvew")

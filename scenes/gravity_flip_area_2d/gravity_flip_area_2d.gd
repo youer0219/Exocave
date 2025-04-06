@@ -14,7 +14,7 @@ enum GravityState {
 @onready var image: Sprite2D = $Image
 
 @export var gravity_state:GravityState = GravityState.UP:set = _set_gravity_state
-@export var gravity_change_sound:AudioStream
+@export_file var gravity_change_sound_path:String
 
 const UP_IMAGE_REGION_X := 170
 const DOWN_IMAGE_REGION_X := 187
@@ -24,7 +24,7 @@ const RIGHT_IMAGE_REGION_X := 221
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		gravity_flip.emit(get_gravity_state_direction())
-		SfxPlayer.play(gravity_change_sound,false,0.0)
+		CoreSystem.audio_manager.play_sound(gravity_change_sound_path)
 
 func _set_gravity_state(value:GravityState):
 	gravity_state = value

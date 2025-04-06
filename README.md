@@ -1,8 +1,11 @@
 # Exocave
 
-离开洞穴
+洞穴之外
 
-[第2届godot游戏创作节参赛作品](https://itch.io/jam/httpsgithubcomli-game-academy-craft-2)
+[第2届godot游戏创作节参赛作品第三名](https://itch.io/jam/httpsgithubcomli-game-academy-craft-2)
+
+[Godot Core System 示例项目](https://github.com/LiGameAcademy/godot_core_system)
+	- 主要使用了音频系统和场景系统
 
 ## 核心机制
 

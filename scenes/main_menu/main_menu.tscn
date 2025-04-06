@@ -1,8 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnubsepx1s70s"]
+[gd_scene load_steps=10 format=3 uid="uid://dnubsepx1s70s"]
 
 [ext_resource type="Script" uid="uid://bkwo6530pkeja" path="res://scenes/main_menu/main_menu.gd" id="1_wem23"]
-[ext_resource type="AudioStream" uid="uid://bhyb86hhdcg75" path="res://assets/audio/music/标题音乐.wav" id="2_3ovsr"]
-[ext_resource type="AudioStream" uid="uid://dnqb2lwuxedrh" path="res://assets/audio/music/Circulation(loop).wav" id="3_5seab"]
 [ext_resource type="Shader" uid="uid://dsl83rk3ci4aa" path="res://assets/shaders/stars.gdshader" id="4_4xg86"]
 [ext_resource type="Script" uid="uid://cl1hjwwd1dnat" path="res://components/button_sound.gd" id="5_wem23"]
 
@@ -47,9 +45,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wem23")
-title_music = ExtResource("2_3ovsr")
-level_music = ExtResource("3_5seab")
 first_level_path = "uid://c0fgq1mj8r5e7"
+title_music_path = "uid://bhyb86hhdcg75"
+level_music_path = "uid://dnqb2lwuxedrh"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_axelx")
