@@ -23,7 +23,6 @@ buses/stretch/scale_mode="fractional"
 
 MusicPlayer="*res://global/audio_player/MusicPlayer.tscn"
 SfxPlayer="*res://global/audio_player/SFXPlayer.tscn"
-MySceneManager="*res://global/scene_manager/MySceneManager.tscn"
 CoreSystem="*res://addons/godot_core_system/source/core_system.gd"
 
 [display]

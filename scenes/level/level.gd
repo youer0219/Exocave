@@ -1,9 +1,6 @@
 extends Node2D
 class_name Level
 
-@export var level_name:String
-@export var next_level_name:String
-
 @export_file var level_path:String
 @export_file var next_level_path:String
 
@@ -14,9 +11,9 @@ class_name Level
 @onready var gravity_area_2d: Area2D = %GravityArea2D
 
 func _ready() -> void:
+	CoreSystem.scene_manager.preload_scene(next_level_path)
 	win_area_2d.level_win.connect(
 		func():
-			#MySceneManager.change_scene_to_level(next_level_name)
 			CoreSystem.scene_manager.change_scene_async(next_level_path)
 	)
 	
@@ -34,5 +31,4 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
-	#MySceneManager.change_scene_to_level(level_name)
 	CoreSystem.scene_manager.change_scene_async(level_path)

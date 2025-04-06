@@ -48,7 +48,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8v6x1")
-restart_level_name = "re_level_01"
 restart_level_path = "uid://diku3h3dpin3r"
 
 [node name="ColorRect" type="ColorRect" parent="."]

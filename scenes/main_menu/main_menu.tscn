@@ -47,7 +47,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wem23")
-first_level_name = "level_01"
 title_music = ExtResource("2_3ovsr")
 level_music = ExtResource("3_5seab")
 first_level_path = "uid://c0fgq1mj8r5e7"

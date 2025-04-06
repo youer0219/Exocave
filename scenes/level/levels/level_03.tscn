@@ -39,8 +39,6 @@ shader_parameter/small_star_speed = 3.0
 shader_parameter/small_star_intensity = 0.8
 
 [node name="Level03" instance=ExtResource("1_b2jqh")]
-level_name = "level_03"
-next_level_name = "level_04"
 level_path = "uid://da0jn4lfseg10"
 next_level_path = "uid://mbu2d847ny6v"
 
