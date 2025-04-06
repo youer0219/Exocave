@@ -327,12 +327,15 @@ func _on_resource_loaded(path: String, resource: Resource) -> void:
 		scene_preloaded.emit(path)
 
 func _update_new_scene_camera(new_scene:Node):
+	if new_scene == null:
+		push_error("new_scene is null!")
+		return
+	
 	var new_scene_viewport = new_scene.get_viewport()
 	if new_scene_viewport != null:
 		if new_scene_viewport.get_camera_2d() != null:
 			new_scene_viewport.get_camera_2d().force_update_scroll()
 			new_scene_viewport.get_camera_2d().force_update_transform()
-	## 3D 无法确定是否有效
-	#if new_scene_viewport != null:
-		#if new_scene_viewport.get_camera_3d() != null:
-			#new_scene_viewport.get_camera_3d().force_update_transform()
+		# 3D 无法确定是否有效
+		if new_scene_viewport.get_camera_3d() != null:
+			new_scene_viewport.get_camera_3d().force_update_transform()
