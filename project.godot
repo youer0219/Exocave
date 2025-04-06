@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [audio]
 
+buses/default_bus_layout=""
 buses/stretch/scale_mode="fractional"
 
 [autoload]
